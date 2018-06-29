@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta charset="utf-8"/>
+    <title>Dashboard - Ace Admin</title>
+
+    <meta name="description" content="overview &amp; stats"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/font-awesome/4.5.0/css/font-awesome.min.css"/>
+
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="/css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap-datepicker3.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/chosen.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/jBox.css"/>
+
+
+    <!-- text fonts -->
+    <link rel="stylesheet" href="/css/fonts.googleapis.com.css"/>
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style"/>
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/css/ace-part2.min.css" class="ace-main-stylesheet"/>
+    <![endif]-->
+    <link rel="stylesheet" href="/css/ace-skins.min.css"/>
+    <link rel="stylesheet" href="/css/ace-rtl.min.css"/>
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/css/ace-ie.min.css"/>
+    <![endif]-->
+    <style type="text/css">
+        select {
+            height: 34px
+        }
+    </style>
+    <!-- inline styles related to this page -->
+    <link rel="stylesheet" href="/css/common.css"/>
+
+    <!-- 页面样式，替换ace模板-->
+    <link rel="stylesheet" href="/css/page.css"/>
+
+    <!-- ace settings handler -->
+    <script src="/js/ace-extra.min.js"></script>
+
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+    <!--[if lte IE 8]>
+    <script src="/js/html5shiv.min.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+    <script src="/js/jquery-2.1.4.min.js"></script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <!-- ace scripts -->
+    <script src="/js/ace-elements.min.js"></script>
+    <script src="/js/ace.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/bootstrap-datepicker.min.js"></script>
+    <script src="/js/chosen.jquery.min.js"></script>
+
+
+    <script src="/js/jQuery.jBox.js"></script>
+    <script>
+        $(document).ready(function () {
+            getMenus('<%= menuIdLevel1 %>');
+        });
+
+
+        function getMenus(menuId) {
+            //重置菜单
+            $("#menuUl").children().each(function (i) {
+                if (i != 0) {
+                    $(this).remove();
+                }
+            });
+            $.get('/menu/getMenus?menuIdLevel1=' + menuId, function (data, status) {
+                var menus1 = data.menus1;
+                var menus2 = data.menus2;
+                for (var i = 0; i < menus1.length; i++) {
+                    var menu = menus1[i];
+                    var html = '<li menuId="' + menu.permissionId + '">\n' +
+                        '<a href="' + menu.url + '?menuId=' + menu.permissionId + '">\n' +
+                        '<i class="menu-icon fa fa-list"></i>\n' +
+                        '<span class="menu-text">' + menu.permissionName + '</span>\n' +
+                        '</a>\n' +
+                        '<b class="arrow"></b>\n' +
+                        '</li>'
+                    $("#menuUl").append(html);
+                }
+
+
+                for (var i = 0; i < menus2.length; i++) {
+                    var item = menus2[i];
+                    var menus = item.menus;
+                    var menuHtml = '';
+                    for (var j = 0; j < menus.length; j++) {
+                        var menu = menus[j];
+                        menuHtml = menuHtml +
+                            '                    <li menuId="' + menu.permissionId + '">\n' +
+                            '                        <a href="' + menu.url + '?menuId=' + menu.permissionId + '">\n' +
+                            '                            <i class="menu-icon fa fa-caret-right"></i>\n' +
+                            '                            ' + menu.permissionName + '\n' +
+                            '                        </a>\n' +
+                            '\n' +
+                            '                        <b class="arrow"></b>\n' +
+                            '                    </li>\n';
+                    }
+
+                    var html = '            <li>\n' +
+                        '                <b class="arrow"></b>\n' +
+                        '                <a href="#" class="dropdown-toggle">\n' +
+                        '                    <i class="menu-icon fa fa-list"></i>\n' +
+                        '                    <span class="menu-text">' + item.menuFolderName + '</span>\n' +
+                        '\n' +
+                        '                    <b class="arrow fa fa-angle-down"></b>\n' +
+                        '                </a>\n' +
+                        '                <b class="arrow"></b>\n' +
+                        '\n' +
+                        '                <ul class="submenu">\n' + menuHtml +
+                        '                </ul>\n' +
+                        '            </li>\n';
+                    $("#menuUl").append(html);
+                }
+
+                $("li[menuId]").each(function () {
+                    var menuId = "<%= menuId %>";
+                    if ($(this).attr("menuId") == menuId) {
+                        $(this).addClass("active").siblings().removeClass("active");
+                        $(this).parent().parent().addClass("active open");
+                    }
+                });
+            });
+
+        }
+    </script>
+</head>
+
+<body class="no-skin">
+<% include nav.ejs %>
+<div class="main-container ace-save-state" id="main-container">
+    <script type="text/javascript">
+        try {
+            ace.settings.loadState('main-container')
+        } catch (e) {
+        }
+    </script>
+    <% include sidebar.ejs %>
+    <% include main_content.ejs %>
+</div><!-- /.main-container -->
+</body>
+</html>

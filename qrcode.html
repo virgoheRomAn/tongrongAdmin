@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type='text/javascript' src='http://cdn.staticfile.org/jquery/2.1.1/jquery.min.js'></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+</head>
+<body>
+<div id="qrcode"></div>
+<input type="text" id="str">
+<input type="button" value="生成" onclick="gen()">
+<script>
+    function gen() {
+        $('#qrcode').html("");
+        $('#qrcode').qrcode($('#str').val());
+    }
+
+</script>
+</body>
+</html>

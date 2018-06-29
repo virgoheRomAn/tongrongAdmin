@@ -1,0 +1,11 @@
+{
+    "tencent": {
+    "AppId": "1253380732",
+	"cos": {
+      "SecretId": "AKID795bWioYpxthNrAyPjtv6g9a8lcXiynW",
+      "SecretKey": "lShttxulYyJd1ITWO6Wr9GF8pKgyK524",
+      "Bucket": "filesystem",
+      "Region": "cn-southwest"
+    }
+  }
+}

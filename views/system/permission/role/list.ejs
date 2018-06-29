@@ -1,0 +1,64 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-md-3 flex-container-1">
+                    <div><label class="control-label" for="date">角色名</label></div>
+                    <div class="flex-item-1"><input type="text" name="name" id="name" style="width: 100%"/></div>
+                </div>
+                <div class="col-md-3 flex-container-1">
+                    <input type="button" class="btn btn-xs btn-primary" style="width: 80px" value="查询" onclick="search()">
+                    <input type="button" class="btn btn-xs btn-primary" style="width: 80px; margin-left: 8px" value="重置" onclick="this.form.reset()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 ">
+            <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th class="center">角色ID</th>
+                        <th class="center">角色名</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div><!-- /.span -->
+    </div><!-- /.row -->
+</form>
+<!-- page specific plugin scripts -->
+
+<script>
+    var table;
+    $(document).ready(function() {
+        table = $('#table').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //开启服务器模式
+            serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+            ajax: {
+                "url": "/system/permission/role/list_data",
+                "data": function ( d ) {
+                    //添加额外的参数传给服务器
+                    d.name = $('#name').val();
+                }
+            },
+            columns: [
+                { data: 'operatorGroupId', className: 'center'  },
+                { data: 'operatorGroupName', className: 'center'  }
+            ]
+        } );
+    } );
+
+    function search(){
+        table.ajax.reload();
+    }
+
+
+</script>

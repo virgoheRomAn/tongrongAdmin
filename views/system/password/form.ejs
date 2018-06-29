@@ -1,0 +1,74 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                修改密码
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="product">原密码&nbsp;<span style="color:red">*</span></label>
+                <div class="col-md-3">
+                    <input type="text" name="account" id="account" class="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="product">贷款产品&nbsp;<span style="color:red">*</span></label>
+                <div class="col-md-3">
+                    <input type="text" name="account" id="account" class="required"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="product">确认新密码<span style="color:red">*</span></label>
+                <div class="col-md-3">
+                    <input type="text" name="account" id="account" class="required"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-5 col-md-9">
+                    <input type="submit" id="submit" value="提交" style="width: 80px"  class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/messages_zh.js"></script>
+<script src="/js/common/validate.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $("#form").validate();
+    });
+
+
+    function doSubmit(){
+        var formElement = document.querySelector("form");
+        var formData = new FormData(formElement);
+        $.ajax({
+            url: "/biz/order/form_save",
+            type: "POST",
+            data: formData,
+            processData: false,  // 告诉jQuery不要去处理发送的数据
+            contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
+            success:function(data){
+                if(data.code=='0'){
+                    alert("提交成功");
+                    $(location).attr('href', '/biz/order/list?menuId=<%=menuId%>');
+                }else {
+                    $('#submit').attr("disabled",false);
+                    alert(data.message);
+                }
+            }
+        });
+    }
+</script>

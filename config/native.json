@@ -1,0 +1,62 @@
+{
+  "sensitive_config_path": "config/sensitive.json",
+  "mysql": {
+    "host": "10.55.120.247",
+    "user": "root",
+    "password": "root",
+    "database": "order",
+    "port": 3306
+  },
+  "tencent": {
+    "cos": {
+      "yx_loan_contract": "yx_loan_contract/",
+      "yx_pledge_contract_batch": "yx_pledge_contract_batch/"
+    }
+  },
+  "validateCode": "yangjie",
+  "integration": {
+    "payment": {
+      "root": "http://payment.test.api.tongrong"
+    },
+    "data": {
+      "url": {
+        "root": "http://data.test.api.tongrong"
+      }
+    },
+    "permission": {
+      "url": {
+        "root": "http://permission.test.api.tongrong"
+      }
+    },
+    "usercenter": {
+      "url": {
+        "root": "http://usercenter.test.api.tongrong"
+      }
+    },
+    "workflow": {
+      "url": {
+        "root": "http://workflow.test.api.tongrong"
+      }
+    },
+    "order": {
+      "url": {
+        "root": "http://order.test.api.tongrong"
+      }
+    },
+    "account": {
+      "url": {
+        "root": "http://account.test.api.tongrong"
+      }
+    },
+    "file": {
+      "url": {
+        "root": "http://file.test.api.tongrong"
+      }
+    },
+    "report": {
+      "url": {
+        "root": "http://10.55.110.209:8080"
+      }
+    }
+  }
+}

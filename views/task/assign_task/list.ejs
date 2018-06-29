@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-xs-12">
+        <table id="table" class="table table-striped table-bordered table-hover" style="text-align: center" width="100%">
+            <thead>
+                <tr id="columnHead">
+                    <% columnHead.forEach(function(item){%>
+
+                    <th class="center"><%=item %></th>
+
+                    <%}) %>
+
+
+                    <th class="center">操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div><!-- /.span -->
+</div><!-- /.row -->
+
+<!-- page specific plugin scripts -->
+<script>
+    $(document).ready(function() {
+        //动态列
+        var columnBodyList = [];
+        var columnBody = "<%=columnBody %>";
+        var colArr = columnBody.split(',');
+        for (var i = 0; i < colArr.length; i++) {
+            var obj = {};
+            obj['data'] = colArr[i];
+            columnBodyList.push(obj);
+        }
+        $('#table').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //"pageLength" : 10,
+            //开启服务器模式
+            serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+            ajax: '/task/assign_task/list_data?listKey=<%=listKey%>',
+            columns: columnBodyList,
+            columnDefs: [{
+                "render": function ( data, type, row ) {
+                    return '<input type="button" value="查看任务" style="width: 80px" class="btn btn-minier btn-primary" onclick="view(' + row.taskId + ',\'' + row.taskName + '\',\'' + row.processInstanceId + '\' ,\'' + row.taskFormKey + '\',\'' + row.orderId + '\',\'' + row.userId + '\')">'
+                        + '&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="查看进度" style="width: 80px" class="btn btn-minier btn-primary" onclick="diagram(' + row.processInstanceId + ')">';
+                },
+                "targets": columnBodyList.length
+            }]
+        } );
+    } );
+
+    function view(taskId, taskName, processInstanceId, formKey, orderId, userId){
+        $(location).attr('href', '/task/assign_task/view?menuId=<%=menuId%>&taskId=' + taskId + '&taskName=' +taskName + '&processInstanceId=' +processInstanceId + '&formKey=' + formKey + '&orderId=' + orderId + '&userId=' + userId);
+    }
+
+    function diagram(processInstanceId){
+        $.get('/task/assign_task/diagram?processInstanceId=' + processInstanceId, function(data,status){
+            window.open('/task/assign_task/diagram_view?url=' + data);
+        });
+    }
+
+</script>

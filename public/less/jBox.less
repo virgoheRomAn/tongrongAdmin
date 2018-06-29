@@ -1,0 +1,652 @@
+.jBox-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  font-family: "微软雅黑", Arial, sans-serif;
+  &.jBox-container-full {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  &.jBox-container-transparent {
+    position: static;
+    background: transparent;
+    &.white {
+      > .jBox-layout {
+        background: #ffffff;
+        .fn-set-radius(3px);
+      }
+    }
+    &.black {
+      > .jBox-layout {
+        .fn-set-opacity(0, 0, 0, 0.6);
+        .fn-set-radius(3px);
+        color: #ffffff;
+      }
+    }
+  }
+  &.jBox-container-white {
+    .fn-set-opacity(0, 0, 0, 0.5);
+    &.transparent {
+      background: transparent;
+    }
+    > .jBox-layout {
+      background: #ffffff;
+      .fn-set-radius(3px);
+    }
+  }
+  &.jBox-container-black {
+    background: transparent;
+    > .jBox-layout {
+      .fn-set-opacity(0, 0, 0, 0.6);
+      .fn-set-radius(3px);
+      color: #ffffff;
+    }
+  }
+
+  &.jBox-container-h5 {
+    font-size: 16px;
+    .jBox-layout > .jBox-cont > .jBox-intro > .jBox-intro-cont > .jBox-icon-box {
+      margin-top: -5px;
+    }
+    &.jBox-confirm-normal {
+      .jBox-layout {
+        .jBox-btn.jBox-btn-horizontal > [class*=jBox-btn-row] a {
+          margin: 0 9px;
+        }
+      }
+    }
+    &.jBox-confirm-simple .jBox-layout .jBox-intro{
+      padding: 30px 30px;
+    }
+    &.jBox-confirm-normal .jBox-layout .jBox-intro{
+      padding: 35px 30px 20px;
+    }
+  }
+  &.jBox-container-pc {
+    font-size: 18px;
+  }
+
+  //确认框都是白色内容
+  &[class*="jBox-container"][class*="jBox-confirm"] {
+    > .jBox-layout {
+      //background: #ffffff;
+      //color: #333333;
+    }
+  }
+  //皮肤
+  &.jBox-skin {
+    & > .jBox-layout {
+      & > .jBox-title {
+        .fn-set-radius(3px 3px 0 0);
+        border-bottom: 0 none;
+        color: #ffffff;
+        .jBox-close-btn {
+          color: #ffffff;
+        }
+      }
+    }
+    &.skin-blue {
+      & > .jBox-layout {
+        & > .jBox-title {
+          background: #4476A7;
+        }
+        .jBox-btn {
+          > [class*="jBox-btn-row"] {
+            a:first-of-type {
+              border: 1px solid #4476A7 !important;
+              background: #4476A7;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+    &.skin-green {
+      & > .jBox-layout {
+        & > .jBox-title {
+          background: #009f95;
+        }
+        .jBox-btn {
+          > [class*="jBox-btn-row"] {
+            a:first-of-type {
+              border: 1px solid #009f95 !important;
+              background: #009f95;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.jBox-layout {
+  position: absolute;
+  /*left: 50%;
+  top: 50%;*/
+  z-index: 100;
+  &.jBox-layout-shadow {
+    .fn-set-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+  }
+  & > .jBox-title {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    padding-right: 50px;
+    border-bottom: 1px solid #dddddd;
+    cursor: move;
+    &.big {
+      height: 60px;
+      line-height: 60px;
+      > label {
+        padding-left: 25px;
+        font-size: 18px;
+      }
+      > a {
+        width: 60px;
+        height: 60px;
+        font-size: 30px;
+      }
+    }
+    & > label {
+      display: block;
+      width: 100%;
+      padding-left: 15px;
+      font-size: 16px;
+      margin: 0;
+      font-weight: normal;
+      cursor: move;
+      &.center {
+        text-align: center;
+      }
+    }
+    & > a {
+      display: block;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      text-align: center;
+      font-family: "宋体", Arial, sans-serif;
+      font-size: 28px;
+      color: #666666;
+    }
+  }
+  & > .jBox-cont {
+    position: relative;
+    display: block;
+    width: 100%;
+    &.jBox-height {
+      height: 100%;
+    }
+    & > .jBox-intro {
+      padding: 20px 30px;
+      &.jBox-table {
+        display: table;
+        width: 100%;
+        height: 100%;
+        padding: 0 30px;
+        & > .jBox-cell {
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+      & > .jBox-intro-cont {
+        position: relative;
+        word-break: break-all;
+        word-wrap: unset;
+        & > .jBox-icon-box {
+          position: relative;
+          display: block;
+          margin: -3px 0 0 0;
+          > img {
+            display: block;
+            width: 100%;
+            height: 100%;
+          }
+          &.jBox-icon-horizontal {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+          &.jBox-icon-vertical {
+            margin: 0 auto 10px;
+          }
+          &.jBox-icon-font {
+            > i {
+              display: block;
+              height: 42px;
+              position: absolute;
+              top: 50%;
+              left: 0;
+              margin-top: -20px;
+              font-size: 30px;
+              &[class*="icon-error"] {
+                color: #ed5565;
+              }
+              &[class*="icon-success"] {
+                color: #5cb85c;
+              }
+              &[class*="icon-waring"] {
+                color: #f0ad4e;
+              }
+            }
+          }
+        }
+      }
+    }
+    & > .jBox-btn {
+      position: relative;
+      display: block;
+      width: 100%;
+      border-top: 1px solid #dddddd;
+      a {
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 16px;
+        color: #666666;
+      }
+      &.jBox-btn-vertical {
+        a {
+          width: 100%;
+          border-bottom: 1px solid #dddddd;
+          &:last-of-type {
+            border-bottom: 0 none;
+          }
+        }
+      }
+      &.jBox-btn-horizontal {
+        &:after {
+          display: table;
+          content: "";
+          clear: both;
+          visibility: visible;
+          height: 0;
+          zoom: 1;
+        }
+        & > .jBox-btn-row2 > a {
+          width: 50%;
+        }
+        & > .jBox-btn-row3 > a {
+          width: 33.33%;
+        }
+        & > .jBox-btn-row4 > a {
+          width: 25%;
+        }
+        & > .jBox-btn-row5 > a {
+          width: 20%;
+        }
+
+        a {
+          width: 100%;
+          float: left;
+          border-right: 1px solid #dddddd;
+          &:last-of-type {
+            border-right: 0 none;
+          }
+        }
+      }
+    }
+  }
+}
+
+//极简模式
+.jBox-confirm-mini {
+  .jBox-layout {
+    .jBox-intro {
+      padding: 35px 30px
+    }
+    .jBox-btn {
+      &.jBox-btn-horizontal {
+        border-top: 0 none;
+        padding: 0 0 20px 0;
+        & > [class*="jBox-btn-row"] {
+          a {
+            float: right;
+            margin-right: 20px;
+            display: inline-block;
+            width: auto;
+            height: 40px;
+            line-height: 38px;
+            padding: 0 40px;
+            font-size: 16px;
+            background: #f2f2f2;
+            border: 1px solid #dddddd !important;
+            color: #333333;
+            .fn-set-radius(3px);
+            /*&:first-of-type{
+              background: #1ab394;
+              border: 1px solid #1ab394 !important;
+              color: #ffffff;
+            }*/
+          }
+        }
+      }
+    }
+  }
+}
+
+//简单模式
+.jBox-confirm-simple {
+  .jBox-layout {
+    .jBox-intro {
+      padding: 45px 30px;
+    }
+    .jBox-btn {
+      &.jBox-btn-horizontal > [class*="jBox-btn-row"] {
+        a:first-of-type {
+          .fn-set-radius(0 0 0 3px);
+        }
+        a:last-of-type {
+          .fn-set-radius(0 0 3px 0);
+        }
+      }
+    }
+  }
+}
+
+//标准模式
+.jBox-confirm-normal {
+  .jBox-layout {
+    .jBox-intro {
+      padding: 35px 30px;
+    }
+    .jBox-btn {
+      &.jBox-btn-horizontal {
+        border-top: 0 none;
+        padding: 20px 0;
+        > [class*="jBox-btn-row"] {
+          text-align: center;
+          a {
+            display: inline-block;
+            float: none;
+            width: auto;
+            padding: 0 40px;
+            margin: 0 15px;
+            height: 40px;
+            line-height: 38px;
+            .fn-set-radius(3px);
+            background: #f2f2f2;
+            border: 1px solid #dddddd !important;
+            color: #333333;
+            &:first-of-type {
+              background: #1ab394;
+              border: 1px solid #1ab394 !important;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+      &.jBox-btn-vertical {
+        & > [class*="jBox-btn-row"] {
+          padding: 5px 50px;
+          a {
+            line-height: 48px;
+            .fn-set-radius(3px);
+            background: #f2f2f2;
+            border: 1px solid #dddddd !important;
+            color: #333333;
+            margin: 15px 0;
+            &:first-of-type {
+              background: #1ab394;
+              border: 1px solid #1ab394 !important;
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.jBox-text-center {
+  text-align: center;
+}
+
+.jBox-text-left {
+  text-align: left;
+}
+
+//引入阿里巴巴字体
+@font-face {
+  font-family: 'iconfont';
+  src: url('../font/iconfont.eot'); /* IE9*/
+  src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ url('../font/iconfont.woff') format('woff'), /* chrome、firefox */ url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ url('../font/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-error-line1:before {
+  content: "\e605";
+}
+
+.icon-error-line2:before {
+  content: "\e60b";
+}
+
+.icon-error-box:before {
+  content: "\e70d";
+}
+
+.icon-loading1:before {
+  content: "\e64a";
+}
+
+.icon-loading2:before {
+  content: "\e601";
+}
+
+.icon-loading3:before {
+  content: "\e77f";
+}
+
+.icon-loading4:before {
+  content: "\e502";
+}
+
+.icon-success-box:before {
+  content: "\e629";
+}
+
+.icon-success-line1:before {
+  content: "\e622";
+}
+
+.icon-success-line2:before {
+  content: "\e782";
+}
+
+.icon-waring-box:before {
+  content: "\e514";
+}
+
+.icon-waring-line1:before {
+  content: "\e6bc";
+}
+
+.icon-waring-line2:before {
+  content: "\e72f";
+}
+
+//设置阴影
+.fn-set-shadow(@shadow) {
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  -o-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+//设置透明背景
+.fn-set-opacity(@r,@g,@b,@a) {
+  @c: rgba(@r, @g, @b, @a);
+  @c2: argb(@c);
+  filter: ~"progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='@{c2}', endColorstr='@{c2}')";
+  background: @c;
+  :root & {
+    filter: none;
+  }
+}
+
+//设置角度
+.fn-set-radius(@radius:5px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+/*j弹窗动画*/
+.animated {
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+}
+
+@-webkit-keyframes loading-rotate {
+  100% {
+    -webkit-transform: rotate(360deg)
+  }
+}
+
+@-moz-keyframes loading-rotate {
+  100% {
+    -moz-transform: rotate(360deg)
+  }
+}
+
+@-o-keyframes loading-rotate {
+  100% {
+    -o-transform: rotate(360deg)
+  }
+}
+
+@keyframes loading-rotate {
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
+.loading-rotate {
+  -webkit-animation: loading-rotate 1s steps(12, end) infinite;
+  -moz-animation: loading-rotate 1s steps(12, end) infinite;
+  -o-animation: loading-rotate 1s steps(12, end) infinite;
+  animation: loading-rotate 1s steps(12, end) infinite;
+}
+
+@-webkit-keyframes jBox-scale {
+  0% {
+    -webkit-transform: scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes jBox-scale {
+  0% {
+    transform: scale(1.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.jBox-scale {
+  -webkit-animation-name: jBox-scale;
+  animation-name: jBox-scale;
+}
+
+@-webkit-keyframes jBox-shake {
+  0%, 100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0)
+  }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translateX(-5px);
+    transform: translateX(-5px)
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translateX(5px);
+    transform: translateX(5px)
+  }
+}
+
+@keyframes jBox-shake {
+  0%, 100% {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0)
+  }
+  10%, 30%, 50%, 70%, 90% {
+    -webkit-transform: translateX(-5px);
+    -ms-transform: translateX(-5px);
+    transform: translateX(-5px)
+  }
+  20%, 40%, 60%, 80% {
+    -webkit-transform: translateX(5);
+    -ms-transform: translateX(5px);
+    transform: translateX(5px)
+  }
+}
+
+.jBox-shake {
+  -webkit-animation-name: jBox-shake;
+  animation-name: jBox-shake
+}
+
+@-webkit-keyframes jBox-scale-show {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes jBox-scale-show {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.jBox-scale-show {
+  -webkit-animation-name: jBox-scale-show;
+  animation-name: jBox-scale-show;
+}

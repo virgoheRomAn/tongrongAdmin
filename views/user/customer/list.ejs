@@ -1,0 +1,66 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="row">
+        <div class="col-xs-12 ">
+            <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th class="center">用户ID</th>
+                        <th class="center">姓名</th>
+                        <th class="center">身份证号</th>
+                        <th class="center">手机号</th>
+                        <th class="center">银行卡号</th>
+                        <th class="center">银行名称</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div><!-- /.span -->
+    </div><!-- /.row -->
+</form>
+<!-- page specific plugin scripts -->
+
+<script>
+    var table;
+    $(document).ready(function() {
+        table = $('#table').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //开启服务器模式
+            serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+//            ajax: {
+//                "url": "/system/permission/role/list_data",
+//                "data": function ( d ) {
+//                    //添加额外的参数传给服务器
+//                    d.name = $('#name').val();
+//                }
+//            },
+            ajax: '/user/customer/list_data',
+            columns: [
+                { data: 'userId', className: 'center'  },
+                { data: 'name', className: 'center'  },
+                { data: 'idNo', className: 'center'  },
+                { data: 'mobileNo', className: 'center'  },
+                { data: 'bankCardNo', className: 'center'  },
+                { data: 'bankCardName', className: 'center'  }
+            ],
+            columnDefs: [{
+                "render": function ( data, type, row, meta ) {
+                    var html = '<a href="/user/customer/form?menuId=<%=menuId%>&userId=' + data + '">' + data + '</a>';
+                    return html;
+                },
+                "targets": 0
+            }]
+        } );
+    } );
+
+    function search(){
+        table.ajax.reload();
+    }
+
+
+</script>

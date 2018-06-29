@@ -1,0 +1,173 @@
+{
+  "file_tmp_path": {
+    "root": "/tmp/node-boss-web/",
+    "relative": {
+      "yx_loan_contract": {
+        "download": "yx_loan_contract/download/",
+        "upload": "yx_loan_contract/upload/",
+        "qrcode": "yx_loan_contract/qrcode/"
+      },
+      "yx_pledge_contract_batch": {
+        "download": "yx_pledge_contract_batch/download/",
+        "upload": "yx_pledge_contract_batch/upload/",
+        "qrcode": "yx_pledge_contract_batch/qrcode/"
+      }
+    }
+  },
+  "template_path": {
+    "root": "template/",
+    "relative": {
+      "contract_loan_1": "contract_loan_1.docx",
+      "contract_pledge_1": "contract_pledge_1.docx",
+      "contract_loan_2": "contract_loan_2.docx",
+      "contract_pledge_2": "contract_pledge_2.docx"
+    }
+  },
+  "file_name_prefix": {
+    "qrcode": "qrcode-",
+    "contract_loan": "TRJK-",
+    "contract_pledge": "TRDY-"
+  },
+  "file_type": {
+    "qrcode": ".png",
+    "contract": ".docx"
+  },
+  "integration": {
+    "payment": {
+      "url": {
+        "deduct": {
+          "findDeduct": "/payment/deduct/findDeduct",
+          "send": "/payment/deduct/send"
+        },
+        "pay": {
+          "findPayTask": "/payment/pay/findPayTask"
+        }
+      }
+    },
+    "data": {
+      "url": {
+        "dict": {
+          "getDictDatas": "/dict/getDictDatas"
+        },
+        "region": {
+          "getRegionDatas": "/region/getRegionDatas"
+        },
+        "product": {
+          "getProducts": "/product/getProducts",
+          "getProductFields": "/product/getProductFields",
+          "addProduct": "/product/addProduct",
+          "updateProductName": "/product/updateProductName",
+          "productProp": "/product/productProp"
+        },
+        "grade": {
+          "list": "/scoreCard/list"
+        },
+        "blacklist": {
+          "list": "/black/list"
+        }
+      }
+    },
+    "permission": {
+      "url": {
+        "permission": {
+          "auth": "/permission/auth",
+          "getAllMenus": "/permission/getAllMenus",
+          "getOperatorMenus": "/permission/getOperatorMenus"
+        },
+        "operator": {
+          "listPage": "/operator/listPage",
+          "findById": "/operator/findById",
+          "save": "/operator/save"
+        },
+        "role": {
+          "listPage": "/role/listPage",
+          "listAll": "/role/listAll"
+        }
+      }
+    },
+    "usercenter": {
+      "url": {
+        "auth": "/system/login",
+        "user": {
+          "savePersonal": "/user/savePersonal",
+          "findPersonal": "/user/findPersonal",
+          "findInfoList": "/user/findInfoList",
+          "findInfo": "/user/findInfo",
+          "saveInfo": "/user/saveInfo",
+          "findFile": "/user/findFile",
+          "saveFile": "/user/saveFile",
+          "deleteFile": "/user/deleteFile"
+        }
+      }
+    },
+    "workflow": {
+      "url": {
+        "config": {
+          "all": "/config/all"
+        },
+        "task": {
+          "base": "/runtime/tasks",
+          "searchByAssignee": "/searchByAssignee"
+        },
+        "approvalRecord": {
+          "add": "/approvalRecord/add",
+          "query": "/approvalRecord/query"
+        },
+        "instance": "/runtime/process-instances",
+        "instance_diagram": "/diagram",
+        "list_config": "/config/listConfig",
+        "business_field": "/config/businessField"
+      },
+      "param_fixed": {
+        "category": "platform"
+      }
+    },
+    "order": {
+      "url": {
+        "order": {
+          "findOrderById": "/order/findOrderById",
+          "saveOrder": "/order/saveOrder",
+          "findOrder": "/order/findOrder",
+          "findFile": "/order/findFile",
+          "deleteFile": "/order/deleteFile",
+          "saveFile": "/order/saveFile"
+        }
+      }
+    },
+    "account": {
+      "url": {
+        "account": {
+          "init": "/account/init"
+        },
+        "repaymentSchedule": {
+          "search": "/repaymentSchedule/search",
+          "repay": "/repaymentSchedule/repay"
+        },
+        "pay":{
+          "find":"/pay/find"
+        },
+        "overdue":{
+          "list":"/due/list",
+          "findRepaymetList":"/due/findRepaymetList"
+        }
+      }
+    },
+    "file": {
+      "url": {
+        "file": {
+          "upload": "/file/upload",
+          "download": "/file/download"
+        }
+      }
+    },
+    "report": {
+      "url": {
+        "report": {
+          "list": "/report/list",
+          "create": "/report/create",
+          "getContent": "/report/getContent"
+        }
+      }
+    }
+  }
+}

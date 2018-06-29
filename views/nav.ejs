@@ -1,0 +1,52 @@
+<div id="navbar" class="navbar navbar-default          ace-save-state">
+    <div class="navbar-container ace-save-state" id="navbar-container">
+        <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+            <span class="sr-only">Toggle sidebar</span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+        </button>
+
+        <div class="navbar-header pull-left">
+            <img src="/images/logo2.png">
+        </div>
+
+
+
+        <nav role="navigation" class="navbar-menu pull-right collapse navbar-collapse" style="padding-left: 0px; padding-right: 0px">
+            <ul class="nav navbar-nav">
+                <li style="width:120px; text-align: center">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <%=userInfo.userName %>
+                        &nbsp;
+                        <i class="ace-icon fa fa-angle-down bigger-110"></i>
+                    </a>
+
+                    <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <li>
+                            <a href="\">
+                                <i class="ace-icon fa fa-power-off"></i>
+                                退出
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <nav role="navigation" class="navbar-menu pull-left collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <% topMenus.forEach(function(menu){%>
+                <li style="width:120px; text-align: center">
+                    <a href="#" onclick="getMenus('<%=menu.permissionId %>')">
+                        <%=menu.permissionName %>
+                    </a>
+                </li>
+                <% }) %>
+            </ul>
+        </nav>
+    </div><!-- /.navbar-container -->
+</div>

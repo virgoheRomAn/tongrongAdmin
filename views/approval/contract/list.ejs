@@ -1,0 +1,87 @@
+<div class="pull-left tableTools-container">
+    <div class="dt-buttons btn-overlap btn-group">
+        <button class="btn btn-primary" onclick="addContract()">生成合同</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+            <thead>
+                <tr>
+                    <th class="center">合同编号</th>
+                    <th class="center">借款方</th>
+                    <th class="center">身份证号</th>
+                    <th class="center">贷款金额（元）</th>
+                    <th class="center">使用期限（月）</th>
+                    <th class="center">生成时间</th>
+
+                    <th class="center">操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div><!-- /.span -->
+</div><!-- /.row -->
+
+<!-- page specific plugin scripts -->
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //开启服务器模式
+            serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+            ajax: '/approval/contract/list_data',
+            columns: [
+                { data: 'contract_no' },
+                { data: 'customer_name' },
+                { data: 'idcard_no' },
+                { data: 'loan_amount' },
+                { data: 'periods' },
+                { data: 'create_time' },
+                { data: 'id' }
+            ],
+            columnDefs: [{
+                "render": function ( data, type, row, meta ) {
+                    var status = row.status;
+                    var id = row.id;
+                    var html;
+                    if(status == '100'){
+                        html = '<a href="#" onclick="abandon(this, ' + data + ')">废弃</a>&nbsp;&nbsp;<a href="/approval/contract/download?id='+ id +'">下载</a>';
+                    }else if(status == '200'){
+                        html = '已废弃';
+                    }
+                    return html;
+                },
+                "targets": 6
+            }]
+        } );
+    } );
+
+    function addContract(){
+        $(location).attr('href', '/approval/contract/form');
+    }
+
+    function abandon(obj, id){
+        var r=confirm("确定要废弃合同?")
+        if (r==true)
+        {
+            $.ajax({
+                url: '/approval/contract/abandon',
+                type: 'post',
+                data: {id:id},
+                success:function(data){
+                    if(data=='1'){
+                        alert('合同废弃成功');
+                        $(obj).parent().html("已废弃");
+                    }
+                }
+            });
+        }
+    }
+</script>

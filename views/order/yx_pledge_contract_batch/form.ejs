@@ -1,0 +1,87 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 合同类型 </label>
+        <div class="col-sm-9">
+            <label class="control-label no-padding-right" for="form-field-1">借款合同+抵押合同</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="contract_count">选择模板</label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <div>
+                    <label class="blue">
+                        <input name="template_type" value="common" type="radio" class="ace" checked/>
+                        <span class="lbl"> 通用模板</span>
+                    </label>
+                </div>
+
+                <div>
+                    <label class="blue">
+                        <input name="template_type" value="tj" type="radio" class="ace" />
+                        <span class="lbl"> 天津模板</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <label class="control-label col-xs-12 col-sm-3 no-padding-right" for="contract_count">合同数</label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="contract_count" id="contract_count" class="col-xs-10 col-sm-5" />
+                &nbsp;&nbsp;<label class="control-label no-padding-right" for="form-field-1">套</label>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button id="submit" class="btn btn-info" type="button" onclick="save();">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                提交
+            </button>
+
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset" onclick="back()">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                返回
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/messages_zh.js"></script>
+<script src="/js/common/form.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#form').validate({
+            rules: {
+                contract_count: {
+                    required: true,
+                    max:100
+                }
+            },
+        });
+    });
+
+    function save(){
+        $('#form').submit();
+    }
+
+    function doSubmit(){
+        $.ajax({
+            url: '/order/yx_pledge_contract_batch/save',
+            type: 'post',
+            data: $("#form").serialize(),
+            success:function(data){
+                alert('提交成功');
+                back();
+            }
+        });
+    }
+
+    function back(){
+        $(location).attr('href', '/order/yx_pledge_contract_batch/list?menuId=<%=menuId%>');
+    }
+</script>

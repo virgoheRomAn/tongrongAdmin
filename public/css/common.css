@@ -1,0 +1,15 @@
+.flex-container-1{
+    display: flex;
+    padding-left: 12px;
+    padding-right: 36px;
+}
+
+.flex-item-1{
+    flex:1;
+    margin-left: 10px;
+}
+
+.checkbox-item-1{
+    width: 120px;
+    margin-bottom: 10px!important;
+}

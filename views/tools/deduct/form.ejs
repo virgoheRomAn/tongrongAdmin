@@ -1,0 +1,136 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="form-group">
+        <label class="col-xs-12 col-sm-3 control-label no-padding-right" for="name"> 扣款人 </label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="name" class="col-xs-12 col-sm-6" value=""/>
+                <label class="col-xs-12 col-sm-3 no-padding-right" style="padding-top: 7px"> 示例：杨捷 </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-12 col-sm-3 control-label no-padding-right" for="idCardNo"> 身份证号 </label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="idCardNo" class="col-xs-12 col-sm-6" value=""/>
+                <label class="col-xs-12 col-sm-3 no-padding-right" style="padding-top: 7px"> 示例：500227198503023518 </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-12 col-sm-3 control-label no-padding-right" for="bankCardNo"> 银行卡号 </label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="bankCardNo" class="col-xs-12 col-sm-6" value=""/>
+                <label class="col-xs-12 col-sm-3 no-padding-right" style="padding-top: 7px"> 示例：6228480402564890018 </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-12 col-sm-3 control-label no-padding-right" for="amount"> 金额（元） </label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="amount" class="col-xs-12 col-sm-6" value=""/>
+                <label class="col-xs-12 col-sm-3 no-padding-right" style="padding-top: 7px"> 示例：1.10 </label>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-12 col-sm-3 control-label no-padding-right" for="mobilePhone"> 手机号码 </label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="mobilePhone" class="col-xs-12 col-sm-6" value="18523380869"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-12 col-sm-3 control-label no-padding-right" for="bankName"> 银行名称 </label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="bankName" class="col-xs-12 col-sm-6" value="中国银行"/>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-xs-12 col-sm-3 control-label no-padding-right" for="validateCode"> 校验码 </label>
+        <div class="col-xs-12 col-sm-9">
+            <div class="clearfix">
+                <input type="text" name="validateCode" class="col-xs-12 col-sm-6" value=""/>
+                <label class="col-xs-12 col-sm-3 no-padding-right" style="padding-top: 7px"> 示例：yangjie </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button id="submit" class="btn btn-info" type="button" onclick="save();">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                提交
+            </button>
+
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset" onclick="back()">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                返回
+            </button>
+        </div>
+    </div>
+</form>
+
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/messages_zh.js"></script>
+<script src="/js/common/form.js"></script>
+<script src="/js/common/region.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#form').validate({
+            rules: {
+                name: {
+                    required: true
+                },
+                idCardNo: {
+                    required: true
+                },
+                bankCardNo: {
+                    required: true
+                },
+                amount: {
+                    required: true
+                },
+                validateCode: {
+                    required: true
+                }
+            }
+        });
+    });
+
+    function save(){
+        $('#form').submit();
+    }
+
+    function doSubmit(){
+        $.ajax({
+            url: '/tools/deduct/save',
+            type: 'post',
+            data: $("#form").serialize(),
+            success:function(data){
+                if(data.code=='0'){
+                    alert('提交成功');
+                    back();
+                }else{
+                    alert(data.message);
+                    $('#submit').attr("disabled",false);
+                }
+
+            }
+        });
+    }
+
+    function back(){
+        $(location).attr('href', '/tools/deduct/list?menuId=<%=menuId%>');
+    }
+
+
+
+</script>

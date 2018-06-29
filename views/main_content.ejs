@@ -1,0 +1,40 @@
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="/index">Home</a>
+                </li>
+
+                <% for(var i = 0;i < menusNamesArray.length;i++){
+                if (i == menusNamesArray.length - 1) {
+                %>
+                <li class="active">
+                    <%= menusNamesArray[i] %>
+                </li>
+                <%
+                }else{
+                %>
+                <li>
+                    <%= menusNamesArray[i] %>
+                </li>
+                <%
+                }
+                }
+                %>
+
+            </ul><!-- /.breadcrumb -->
+        </div>
+
+        <div class="page-content">
+            <div class="row">
+                <div class="col-md-12 col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
+                    <%- include(view) %>
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+</div><!-- /.main-content -->

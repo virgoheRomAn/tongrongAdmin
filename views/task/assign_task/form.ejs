@@ -1,0 +1,1254 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                贷款信息
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="product">贷款产品</label>
+                <div class="col-md-3">
+                    <div class="clearfix product" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix product" style="display: none">
+                        <select class="input-medium" name="product" id="product">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="childProduct">子产品</label>
+                <div class="col-md-3">
+                    <div class="clearfix childProduct" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix childProduct" style="display: none">
+                        <select class="input-medium" name="childProduct" id="childProduct">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="termNo">申请贷款期数</label>
+                <div class="col-md-3">
+                    <div class="clearfix termNo" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix termNo">
+                        <select class="input-medium" name="termNo" id="termNo">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="purpose">贷款用途</label>
+                <div class="col-md-3">
+                    <div class="clearfix purpose" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix purpose" style="display: none">
+                        <select class="input-medium" name="purpose" id="purpose">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="account"> 申请贷款金额（元） </label>
+                <div class="col-md-3">
+                    <div class="clearfix account" style="display: none">
+                        <label class="control-label text-left"> </label>
+                    </div>
+                    <div class="clearfix account" style="display: none">
+                        <input type="text" name="account" id="account"/>
+                        <label class="text-left"> 元 </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                申请人基本信息
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right">姓名</label>
+                <div class="col-md-3">
+                    <div class="clearfix name" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix name">
+                        <input type="text" name="name" id="name"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">身份证号</label>
+                <div class="col-md-3">
+                    <div class="clearfix idNo" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix idNo">
+                        <input type="text" name="idNo" id="idNo"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">手机号码</label>
+                <div class="col-md-3">
+                    <div class="clearfix mobileNo" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix mobileNo">
+                        <input type="text" name="mobileNo" id="mobileNo"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="marry">婚姻状况</label>
+                <div class="col-md-3">
+                    <div class="clearfix marry" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix marry" style="display: none">
+                        <select class="input-medium" name="marry" id="marry">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">所在城市</label>
+                <div class="col-md-7">
+                    <div class="clearfix areaAll" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix areaAll" style="display: none">
+                        <select class="input-small province" name="province" id="province">
+                            <option value="">&nbsp;</option>
+                        </select>
+                        <select class="input-small" name="city" id="city">
+                            <option value="">&nbsp;</option>
+                        </select>
+                        <select class="input-small" name="region" id="region">
+                            <option value="">&nbsp;</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="houseType">住宅性质</label>
+                <div class="col-md-3">
+                    <div class="clearfix houseType" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix houseType" style="display: none">
+                        <select class="input-medium" name="houseType" id="houseType">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="companyType"> 单位性质 </label>
+                <div class="col-md-3">
+                    <div class="clearfix companyType" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix companyType" style="display: none">
+                        <select class="input-medium" name="companyType" id="companyType">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="workType">职业类型</label>
+                <div class="col-md-3">
+                    <div class="clearfix workType" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix workType" style="display: none">
+                        <select class="input-medium" name="workType" id="workType">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                联系人信息
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="friendName1"> 姓名 </label>
+                <div class="col-md-3">
+                    <div class="clearfix friendName1" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix friendName1" style="display: none">
+                        <input type="text" name="friendName1" id="friendName1"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="friendMobileNo1"> 手机号码 </label>
+                <div class="col-md-3">
+                    <div class="clearfix friendMobileNo1" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix friendMobileNo1" style="display: none">
+                        <input type="text" name="friendMobileNo1" id="friendMobileNo1"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="friendShip1"> 与申请人关系 </label>
+                <div class="col-md-3">
+                    <div class="clearfix friendShip1" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix friendShip1" style="display: none">
+                        <select class="input-medium" name="friendShip1" id="friendShip1">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="friendName2"> 姓名 </label>
+                <div class="col-md-3">
+                    <div class="clearfix friendName2" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix friendName2" style="display: none">
+                        <input type="text" name="friendName2" id="friendName2"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="friendMobileNo2"> 手机号码 </label>
+                <div class="col-md-3">
+                    <div class="clearfix friendMobileNo2" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix friendMobileNo2" style="display: none">
+                        <input type="text" name="friendMobileNo2" id="friendMobileNo2"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="friendShip2"> 与申请人关系 </label>
+                <div class="col-md-3">
+                    <div class="clearfix friendShip2" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix friendShip2" style="display: none">
+                        <select class="input-medium" name="friendShip2" id="friendShip2">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                社保信息
+                <a href="#a1" data-toggle="collapse" class="pull-right">
+                    <i class="ace-icon fa fa-chevron-down"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="row collapse" id="a1">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="socialSecurityOpenYear"> 开户年月 </label>
+                <div class="col-md-3">
+                    <div class="clearfix socialSecurityOpenYear" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix socialSecurityOpenYear" style="display: none">
+                        <input type="text" name="socialSecurityOpenYear" id="socialSecurityOpenYear"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="socialSecurityNowStatus"> 当前状态 </label>
+                <div class="col-md-3">
+                    <div class="clearfix socialSecurityNowStatus" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix socialSecurityNowStatus" style="display: none">
+                        <input type="text" name="socialSecurityNowStatus" id="socialSecurityNowStatus"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="socialSecurityMonthMoney"> 月缴存金额（元） </label>
+                <div class="col-md-3">
+                    <div class="clearfix socialSecurityMonthMoney" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix socialSecurityMonthMoney" style="display: none">
+                        <input type="text" name="socialSecurityMonthMoney" id="socialSecurityMonthMoney"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="socialSecurityDepositUnits"> 缴存单位 </label>
+                <div class="col-md-3">
+                    <div class="clearfix socialSecurityDepositUnits" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix socialSecurityDepositUnits" style="display: none">
+                        <input type="text" name="socialSecurityDepositUnits" id="socialSecurityDepositUnits"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                公积金信息
+                <a href="#a2" data-toggle="collapse" class="pull-right">
+                    <i class="ace-icon fa fa-chevron-down"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="row collapse" id="a2">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="accumulationFundOpenYear"> 开户年月 </label>
+                <div class="col-md-3">
+                    <div class="clearfix accumulationFundOpenYear" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix accumulationFundOpenYear" style="display: none">
+                        <input type="text" name="accumulationFundOpenYear" id="accumulationFundOpenYear"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="accumulationFundNowStatus"> 当前状态 </label>
+                <div class="col-md-3">
+                    <div class="clearfix accumulationFundNowStatus" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix accumulationFundNowStatus" style="display: none">
+                        <input type="text" name="accumulationFundNowStatus" id="accumulationFundNowStatus"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="accumulationFundMonthMoney"> 月缴存金额（元） </label>
+                <div class="col-md-3">
+                    <div class="clearfix accumulationFundMonthMoney" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix accumulationFundMonthMoney" style="display: none">
+                        <input type="text" name="accumulationFundMonthMoney" id="accumulationFundMonthMoney"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="accumulationFundDepositUnits"> 缴存单位 </label>
+                <div class="col-md-3">
+                    <div class="clearfix accumulationFundDepositUnits" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix accumulationFundDepositUnits" style="display: none">
+                        <input type="text" name="accumulationFundDepositUnits" id="accumulationFundDepositUnits"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                房产信息
+                <a href="#a3" data-toggle="collapse" class="pull-right">
+                    <i class="ace-icon fa fa-chevron-down"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+
+    <div class="row collapse" id="a3">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="houseAddress">房产地址</label>
+                <div class="col-md-11">
+                    <div class="clearfix houseAddress" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix houseAddress" style="display: none">
+                        <input type="text" name="houseAddress" id="houseAddress" class="input-xxlarge" placeholder="详细地址"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="houseArea"> 建筑面积（㎡） </label>
+                <div class="col-md-3">
+                    <div class="clearfix houseArea" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix houseArea" style="display: none">
+                        <input type="text" name="houseArea" id="houseArea"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="houseValue"> 房产评估价（元） </label>
+                <div class="col-md-3">
+                    <div class="clearfix houseValue" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix houseValue" style="display: none">
+                        <input type="text" name="houseValue" id="houseValue"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="contract"> 消费合同金额（元） </label>
+                <div class="col-md-3">
+                    <div class="clearfix contract" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix contract" style="display: none">
+                        <input type="text" name="contract" id="contract"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                人行征信信息
+                <a href="#a4" data-toggle="collapse" class="pull-right">
+                    <i class="ace-icon fa fa-chevron-down"></i>
+                </a>
+            </h3>
+        </div>
+    </div>
+    <div class="row collapse" id="a4">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-md-3">
+                    <div class="reportType" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="reportType" style="display: none">
+                        <label>
+                            <input name="reportType" type="radio" class="ace" value="1" checked onclick="toggle(this.value)"/>
+                            <span class="lbl">详版</span>
+                        </label>
+
+                        <label>
+                            <input name="reportType" type="radio" class="ace" value="2" onclick="toggle(this.value)"/>
+                            <span class="lbl">简版</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="noCancelCardNumber"> 未销户信用卡账户数 </label>
+                <div class="col-md-3">
+                    <div class="clearfix noCancelCardNumber" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix noCancelCardNumber" style="display: none">
+                        <input type="text" name="noCancelCardNumber" id="noCancelCardNumber"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="noCancelHouseNumber"> 未结清购房贷款账户数
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix noCancelHouseNumber" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix noCancelHouseNumber" style="display: none">
+                        <input type="text" name="noCancelHouseNumber" id="noCancelHouseNumber"/>
+                    </div>
+                </div>
+                    <label class="col-md-1 control-label no-padding-right" for="noCancelOtherNumber"> 未结清其他贷款账户数 </label>
+                <div class="col-md-3">
+                    <div class="clearfix noCancelOtherNumber" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix noCancelOtherNumber" style="display: none">
+                        <input type="text" name="noCancelOtherNumber" id="noCancelOtherNumber"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="noCancelCardBiglimit"> 未销户信用卡最大额度（元）
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix noCancelCardBiglimit" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix noCancelCardBiglimit" style="display: none">
+                        <input type="text" name="noCancelCardBiglimit" id="noCancelCardBiglimit"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="noCancelCardUselimit"> 未销户信用卡使用额度（元）
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix noCancelCardUselimit" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix noCancelCardUselimit" style="display: none">
+                        <input type="text" name="noCancelCardUselimit" id="noCancelCardUselimit"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="noCancelCardLimitall"> 未销户信用卡总额度（元）
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix noCancelCardLimitall" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix noCancelCardLimitall" style="display: none">
+                        <input type="text" name="noCancelCardLimitall" id="noCancelCardLimitall"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="houseMonthMoney"> 房屋贷款月供金额（元）
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix houseMonthMoney" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix houseMonthMoney" style="display: none">
+                        <input type="text" name="houseMonthMoney" id="houseMonthMoney"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="check3monthMoneyCount"> 近3月信用卡加贷款审批查询次数
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix check3monthMoneyCount" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix check3monthMoneyCount" style="display: none">
+                        <input type="text" name="check3monthMoneyCount" id="check3monthMoneyCount"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="check3monthSelfCount"> 近3月本人查询次数
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix check3monthSelfCount" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix check3monthSelfCount" style="display: none">
+                        <input type="text" name="check3monthSelfCount" id="check3monthSelfCount"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="firstCardMonth"> 首张信用卡发卡月份
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix firstCardMonth" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix firstCardMonth" style="display: none">
+                        <input type="text" name="firstCardMonth" id="firstCardMonth"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="loanSendMonth"> 其他贷款发放月份
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix loanSendMonth" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix loanSendMonth" style="display: none">
+                        <input type="text" name="loanSendMonth" id="loanSendMonth"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="houseLoanMonth"> 最早房屋贷款发放年月
+                </label>
+                <div class="col-md-3">
+                    <div class="clearfix houseLoanMonth" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix houseLoanMonth" style="display: none">
+                        <input type="text" name="houseLoanMonth" id="houseLoanMonth"/>
+                    </div>
+                </div>
+            </div>
+            <div id="detail">
+                <div class="form-group">
+                    <label class="col-md-1 control-label no-padding-right" for="card12monthMaxOverdue"> 信用卡近12月最大逾期期数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix card12monthMaxOverdue" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix card12monthMaxOverdue" style="display: none">
+                            <input type="text" name="card12monthMaxOverdue" id="card12monthMaxOverdue"/>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label no-padding-right" for="cardOverdueMonth"> 信用卡最近逾期距今月数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix cardOverdueMonth" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix cardOverdueMonth" style="display: none">
+                            <input type="text" name="cardOverdueMonth" id="cardOverdueMonth"/>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label no-padding-right" for="cardOverdue12monthCount"> 信用卡近12月逾期月数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix cardOverdue12monthCount" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix cardOverdue12monthCount" style="display: none">
+                            <input type="text" name="cardOverdue12monthCount" id="cardOverdue12monthCount"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1 control-label no-padding-right" for="loan12monthMaxOverdue"> 贷款近12月最大逾期期数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix loan12monthMaxOverdue" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix loan12monthMaxOverdue" style="display: none">
+                            <input type="text" name="loan12monthMaxOverdue" id="loan12monthMaxOverdue"/>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label no-padding-right" for="loanOverdueMonthCount"> 贷款最近逾期距今月数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix loanOverdueMonthCount" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix loanOverdueMonthCount" style="display: none">
+                            <input type="text" name="loanOverdueMonthCount" id="loanOverdueMonthCount"/>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label no-padding-right" for="loanOverdueMonth"> 贷款近12月逾期月数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix loanOverdueMonth" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix loanOverdueMonth" style="display: none">
+                            <input type="text" name="loanOverdueMonth" id="loanOverdueMonth"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="simple" style="display: none">
+                <div class="form-group">
+                    <label class="col-md-1 control-label no-padding-right" for="card5yearMonthCount"> 信用卡近5年逾期月数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix card5yearMonthCount" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix card5yearMonthCount" style="display: none">
+                            <input type="text" name="card5yearMonthCount" id="card5yearMonthCount"/>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label no-padding-right" for="card5year90dayCount"> 信用卡近5年90天以上逾期月数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix card5year90dayCount" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix card5year90dayCount" style="display: none">
+                            <input type="text" name="card5year90dayCount" id="card5year90dayCount"/>
+                        </div>
+                    </div>
+                    <label class="col-md-1 control-label no-padding-right" for="loan5yearMonthCount"> 贷款近5年逾期月数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix loan5yearMonthCount" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix loan5yearMonthCount" style="display: none">
+                            <input type="text" name="loan5yearMonthCount" id="loan5yearMonthCount"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-1 control-label no-padding-right" for="load5year90dayCount"> 贷款近5年90天以上
+                        逾期月数
+                    </label>
+                    <div class="col-md-3">
+                        <div class="clearfix load5year90dayCount" style="display: none">
+                            <label class="control-label text-left"></label>
+                        </div>
+                        <div class="clearfix load5year90dayCount" style="display: none">
+                            <input type="text" name="load5year90dayCount" id="load5year90dayCount"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row showItem" style="display: none">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                资料清单
+            </h3>
+        </div>
+    </div>
+
+    <div class="row showItem editItem" style="display: none">
+        <div class="form-group">
+
+            <div class="col-xs-3" id="fileDiv">
+                <input type="file" id="file" name="file"/>
+            </div>
+            <div class="col-xs-3">
+                <select class="input-medium" name="fileType" id="fileType">
+                    <option></option>
+                </select>
+                <input type="button" value="上传资料" style="width: 80px" class="btn btn-xs btn-primary" onclick="uploadFile()">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row showItem" style="display: none">
+        <div class="col-xs-12">
+            <table id="fileTable" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                <tr>
+                    <th class="center">资料名称</th>
+                    <th class="center">资料类型</th>
+                    <th class="center">上传人</th>
+                    <th class="center">上传时间</th>
+                    <th class="center">查看</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div><!-- /.span -->
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                审批记录
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="approvalTable" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                <tr>
+                    <th class="center">时间</th>
+                    <th class="center">环节</th>
+                    <th class="center">操作者</th>
+                    <th class="center">操作</th>
+                    <th class="center">处理意见</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div><!-- /.span -->
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                审批信息
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="riskAccount"> 批准贷款金额（元） </label>
+                <div class="col-md-3">
+                    <div class="clearfix riskAccount" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix riskAccount" style="display: none">
+                        <input type="text" name="riskAccount" id="riskAccount"/>
+                    </div>
+                </div>
+
+                <label class="col-md-1 control-label no-padding-right" for="riskTerm">批准贷款期数</label>
+                <div class="col-md-3">
+                    <div class="clearfix riskTerm" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix riskTerm">
+                        <select class="input-medium" name="riskTerm" id="riskTerm">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="rate"> 贷款利率（%） </label>
+                <div class="col-md-3">
+                    <div class="clearfix rate" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix rate" style="display: none">
+                        <input type="text" name="rate" id="rate"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="repayment"> 还款方式 </label>
+                <div class="col-md-3">
+                    <div class="clearfix repayment" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix repayment">
+                        <select class="input-medium" name="repayment" id="repayment">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="finalAccount"> 放款金额（元） </label>
+                <div class="col-md-3">
+                    <div class="clearfix finalAccount" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix finalAccount" style="display: none">
+                        <input type="text" name="finalAccount" id="finalAccount"/>
+                    </div>
+                </div>
+                <label class="col-md-1 control-label no-padding-right" for="field1"> 开户银行 </label>
+                <div class="col-md-3">
+                    <div class="clearfix field1" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix field1" style="display: none">
+                        <input type="text" name="field1" id="field1"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right" for="actMoneyDay"> 约定还款日（放款日） </label>
+                <div class="col-md-3">
+                    <div class="clearfix actMoneyDay" style="display: none">
+                        <label class="control-label text-left"></label>
+                    </div>
+                    <div class="clearfix actMoneyDay" style="display: none">
+                        <input class="date-picker" name="actMoneyDay" id="actMoneyDay" type="text" data-date-format="yyyy-mm-dd" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                流程处理
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group" id="operationDiv" style="display: none">
+                <label class="col-md-1 control-label no-padding-right" for=""> 审批意见 </label>
+                <div class="col-md-3">
+                    <div class="clearfix operation">
+                        <select class="input-medium" name="operation" id="operation">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" id="commentDiv" style="display: none">
+                <label class="col-md-1 control-label no-padding-right" for="comment"> 处理意见 </label>
+                <div class="col-md-3">
+                    <div class="clearfix">
+                        <textarea class="form-control" name="comment" id="comment"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-5 col-md-9">
+                    <button class="btn btn-info" type="button" onclick="submitForm()">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="taskId" value="<%=taskId%>">
+    <input type="hidden" name="taskName" value="<%=taskName%>">
+    <input type="hidden" name="processInstanceId" value="<%=processInstanceId%>">
+    <input type="hidden" name="formKey" value="<%=formKey%>">
+    <input type="hidden" name="orderId" value="<%=orderId%>">
+    <input type="hidden" name="userId" value="<%=userId%>">
+</form>
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/messages_zh.js"></script>
+<script src="/js/common/form.js"></script>
+<script src="/js/common/region.js"></script>
+<script src="/js/common/product.js"></script>
+<script src="/js/common/dict.js"></script>
+
+<script>
+    var fileTable;
+    $(document).ready(function() {
+        $('.date-picker').datepicker({
+            autoclose:true
+        });
+
+        $('#file').ace_file_input({
+            no_file:'请选择文件',
+            btn_choose:'选择',
+            btn_change:'重新选择',
+            droppable:false,
+            onchange:null,
+            thumbnail:false //| true | large
+            //whitelist:'gif|png|jpg|jpeg'
+            //blacklist:'exe|php'
+            //onchange:''
+            //
+        });
+
+        $.get('/task/assign_task/view_data?formKey=<%=formKey%>&orderId=<%=orderId%>&processInstanceId=<%=processInstanceId%>', function(data){
+            fillFieldData(data);
+            showFieldData(data);
+
+            $('#approvalTable').DataTable( {
+                "processing": true,
+                "lengthChange": false,
+                "filter": false,
+                //开启服务器模式
+                //serverSide: true,
+                //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+                ajax: '/task/assign_task/approval_list_data?processInstanceId=<%=processInstanceId%>',
+                columns: [
+                    { data: 'createTime', className: 'center' },
+                    { data: 'taskName', className: 'center' },
+                    { data: 'operateName', className: 'center' },
+                    { data: 'operation', className: 'center' },
+                    { data: 'comment', className: 'center' }
+                ]
+            } );
+
+            fileTable = $('#fileTable').DataTable( {
+                "processing": true,
+                "lengthChange": false,
+                "filter": false,
+                //开启服务器模式
+                //serverSide: true,
+                //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+                ajax: '/task/assign_task/file_list_data?orderId=<%=orderId%>',
+                columns: [
+                    { data: 'fileName' },
+                    { data: 'fileType' },
+                    { data: 'uploadName' },
+                    { data: 'createTime' },
+                    { data: 'fileUrl' }
+                ],
+                columnDefs: [{
+                    "render": function ( data, type, row, meta ) {
+                        return '<input type="button" value="查看" style="width: 80px" class="btn btn-minier btn-primary" onclick="showFile(\'' + data + '\')">&nbsp;&nbsp;&nbsp;' +
+                            '<input type="button" value="删除" style="width: 80px" class="btn btn-minier btn-primary editItem" onclick="deleteFile(\'' + data + '\',\'<%=orderId%>\')">';
+                    },
+                    "targets": 4
+                }],
+                "initComplete": function(settings, json) {
+                    showListData(data);
+                }
+            } );
+        });
+    });
+
+    function showListData(data){
+        var formListList = data.formListList;
+        for(var i=0; i<formListList.length; i++) {
+            var displayType = formListList[i].displayType;
+            if(displayType=="NONE"){
+                $('.showItem').remove();
+            }else if(displayType=="SHOW"){
+                $('.editItem').remove();
+                $('.showItem').show();
+            }else if(displayType=="EDIT"){
+                var dict = data.dict;
+                var fileTypeDictFilterArray = data.fileTypeDictFilter;
+                for(var j=0; j<dict.length; j++) {
+                    if(dict[j].typeCode==data.fileTypeDict&&fileTypeDictFilterArray.indexOf(dict[j].code)!=-1){
+                        $('#fileType').append('<option value="' + dict[j].code + '">' + dict[j].codeDesc + '</option>');
+                    }
+                }
+                $('.showItem').show();
+            }
+        }
+    }
+
+    function showFieldData(data){
+        var formFieldList = data.formFieldList;
+        for(var i=0; i<formFieldList.length; i++) {
+            var elements =  $('.' + formFieldList[i].fieldName);
+            if(formFieldList[i].displayType == 'SHOW'){
+                elements.each(function(index,element){
+                    if(index==1){
+                        $(element).remove();
+                    }else {
+                        $(element).show();
+                    }
+                });
+            }else if(formFieldList[i].displayType == 'EDIT'){
+                elements.each(function(index,element){
+                    if(index==0){
+                        $(element).remove();
+                    }else {
+                        $(element).show();
+                    }
+                });
+            }else{
+                elements.each(function(index,element){
+                    $(element).remove();
+                });
+            }
+        }
+    }
+
+    function fillFieldData(data){
+        var formFieldData = data.formFieldData;
+        var dict = data.dict;
+        var region = data.region;
+        var formFieldList = data.formFieldList;
+        var products = data.products;
+
+        initProduct(products, 'product', 'childProduct', formFieldData['product'], formFieldData['childProduct']);
+        initProductFields($('#product').val(), $('#childProduct').val(), formFieldData);
+
+        for(var i=0; i<formFieldList.length; i++) {
+            var formField = formFieldList[i];
+            var dictTypeCode = formField.dictTypeCode;
+            var dictFilter = formField.dictFilter;
+            var fieldName = formField.fieldName;
+            var fieldType = formField.fieldType;
+            var elements =  $('.' + fieldName);
+
+
+            //报告类型字段单独处理
+            if(fieldName=="reportType"){
+                if(!formFieldData[fieldName]){
+                    formFieldData[fieldName] = '1';
+                }
+                elements.each(function(index,element){
+                    if(index==0){
+                        for(var j=0; j<dict.length; j++) {
+                            if(dict[j].typeCode==dictTypeCode && dict[j].code==formFieldData[fieldName]){
+                                $(element).children("label").html(dict[j].codeDesc);
+                                break;
+                            }
+                        }
+
+                    }
+                });
+                $(":input[name='reportType']").each(function(){
+                    if(formFieldData[fieldName]==$(this).val()){
+                        $(this).click();
+                    }
+                });
+            }
+            
+            //状态字段单独处理
+            if(fieldType=='APPROVAL_OPERATION'){
+                var dictFilterArray = dictFilter.split(',');
+
+                for(var j=0; j<dict.length; j++) {
+                    if(dict[j].typeCode==dictTypeCode && dictFilterArray.indexOf(dict[j].code)>=0){
+                        $(".operation").children("select").append('<option value="' + dict[j].code + '">' + dict[j].codeDesc + '</option>');
+                    }
+                }
+                $("#operationDiv").show();
+            }
+
+            //审批意见字段单独处理
+            if(fieldType=='APPROVAL_COMMENT'){
+                $("#commentDiv").show();
+            }
+
+            //产品和子产品字段单独处理
+            if(fieldName=='product'){
+                elements.each(function(index,element){
+                    if(index==0){
+                        $(element).children("label").html(getProductNameByCode(products, formFieldData['product']));
+                    }
+                });
+            }
+            if(fieldName=='childProduct'){
+                elements.each(function(index,element){
+                    if(index==0){
+                        $(element).children("label").html(getProductNameByCode(products, formFieldData['childProduct']));
+                    }
+                });
+            }
+
+            //产品字段
+            if(fieldType=='PRODUCT_FIELD'){
+                elements.each(function(index,element){
+                    if(index==0){
+                        $(element).children("label").html(getDictDescByCode(dict, dictTypeCode, formFieldData[fieldName]));
+                    }
+                });
+            }
+            //字典字段
+            else if(fieldType=='DICT'){
+                var codeDesc = '';
+                for(var j=0; j<dict.length; j++) {
+                    if(dict[j].typeCode==dictTypeCode && dict[j].code==formFieldData[fieldName]){
+                        codeDesc = dict[j].codeDesc;
+                        break;
+                    }
+                }
+                elements.each(function(index,element){
+                    if(index==0){
+                        $(element).children("label").html(codeDesc);
+                    }else if(index==1){
+                        for(var j=0; j<dict.length; j++) {
+                            if(dict[j].typeCode==dictTypeCode){
+                                if(dict[j].code==formFieldData[fieldName]){
+                                    $(element).children("select").append('<option value="' + dict[j].code + '" selected>' + dict[j].codeDesc + '</option>');
+                                }else{
+                                    $(element).children("select").append('<option value="' + dict[j].code + '">' + dict[j].codeDesc + '</option>');
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            else if(fieldType=='TEXT'){
+                elements.each(function(index,element){
+                    if(index==0){
+                        $(element).children("label").html(formFieldData[fieldName]);
+                    }else if(index==1){
+                        $(element).children("input").val(formFieldData[fieldName]);
+                    }
+                });
+                if(fieldName=='field1'){
+                    var bankCardName = formFieldData['bankCardName'];
+                    elements.each(function(index,element){
+                        if(index==0){
+                            if(formFieldData[fieldName]){
+                                $(element).children("label").html(bankCardName + formFieldData[fieldName]);
+                            }else{
+                                $(element).children("label").html(bankCardName);
+                            }
+
+
+                        }else if(index==1){
+                            $(element).children("input").val(formFieldData[fieldName]);
+                            $(element).children("input").before(bankCardName);
+                        }
+                    });
+                }
+            }
+            else if(fieldType=='AREA_ALL'){
+                var array = dictTypeCode.split(',');
+                elements.each(function(index,element){
+                    var areaDesc = "";
+                    if(index==0){
+                        areaDesc = getProvinceById(region, formFieldData[array[0]]) + " " + getCityById(region, formFieldData[array[1]]) + " " + getAreaById(region, formFieldData[array[2]]);
+                        $(element).children("label").html(areaDesc);
+                    }else if(index==1){
+                        initAreaAll(region, array[0], array[1], array[2], formFieldData[array[0]], formFieldData[array[1]], formFieldData[array[2]]);
+                    }
+                });
+            }
+        }
+    }
+
+    function toggle(reportType){
+//        var reportType = $("input[name='reportType']:checked").val();
+        if(reportType=='1'){
+            $("#detail").show();
+            $("#simple").hide();
+        }else if(reportType=='2'){
+            $("#detail").hide();
+            $("#simple").show();
+        }
+    }
+
+
+
+
+    function showFile(fileUrl){
+        $.get('/task/assign_task/file_download?fileUrl=' + fileUrl, function(data,status){
+            window.open(data);
+        });
+    }
+
+    function deleteFile(fileUrl, orderId){
+        $.ajax({
+            url: '/task/assign_task/file_delete',
+            type: 'post',
+            data: {fileUrl:fileUrl,orderId:orderId},
+            success:function(data){
+                alert('提交成功');
+                fileTable.ajax.reload();
+            }
+        });
+    }
+
+    function submitForm(){
+        $.ajax({
+            url: '/task/assign_task/task_complete',
+            type: 'post',
+            data: $("#form").serialize(),
+            success:function(data){
+                alert('提交成功');
+                $(location).attr('href', '/task/assign_task/list?menuId=<%=menuId%>');
+            }
+        });
+    }
+
+    function uploadFile() {
+        var files = document.getElementById('file').files; //files是文件选择框选择的文件对象数组
+        if(files.length == 0) return;
+
+        var formData = new FormData();
+        formData.append('file', files[0]);
+        formData.append('userId', '<%=userId%>');
+        formData.append('orderId', '<%=orderId%>');
+        formData.append('fileType', $('#fileType').val());
+
+        $.ajax({
+            url: "/task/assign_task/file_upload",
+            type: "POST",
+            data: formData,
+            processData: false,  // 告诉jQuery不要去处理发送的数据
+            contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
+            success: function(response,status,xhr){
+                alert('上传成功');
+                fileTable.ajax.reload();
+            }
+        });
+    }
+</script>

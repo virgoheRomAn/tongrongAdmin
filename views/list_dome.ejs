@@ -1,0 +1,16 @@
+<div class="vh-list-bar">
+    <ul class="vh-list-header">
+        <% for(var i = 0;i < listData.headArray.length;i++){ %>
+        <li>
+            <%= listData.headArray[i] %>
+        </li>
+        <% } %>
+    </ul>
+    <ul class="vh-list-body">
+        <% for(var j = 0;j < listData.bodyArray.length;j++){ %>
+        <li>
+            <%= listData.bodyArray[j].content %>
+        </li>
+        <% } %>
+    </ul>
+</div>

@@ -1,0 +1,283 @@
+<div class="page-content product-page-content">
+    <div class="product-module">
+        <div class="page-header">
+            <h1>产品相关操作</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="mt-15 mb-30">
+                    <a href="#createModal" role="button" class="btn btn-primary btn-sm" data-toggle="modal">新建产品</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-module">
+        <div class="page-header">
+            <h1>产品列表</h1>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="mt-15">
+                    <div class="vh-list-bar">
+                        <table id="productTable" class="table table-striped table-bordered table-hover product-table">
+                            <colgroup>
+                                <col width="15%">
+                                <col width="20%">
+                                <col width="40%">
+                                <col width="20%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>产品ID</th>
+                                <th>父级名称</th>
+                                <th>产品名称</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <% for(var j = 0;j < listDataArray.length;j++){ %>
+                            <tr>
+                                <td>
+                                    <%= listDataArray[j].productCode %>
+                                </td>
+                                <td>
+                                    <% if(!listDataArray[j].parentProductName){ %>
+                                    暂无父类
+                                    <% } else{ %>
+                                    <%= listDataArray[j].parentProductName %>
+                                    <% } %>
+                                </td>
+                                <td>
+                                    <%= listDataArray[j].productName %>
+                                </td>
+                                <td>
+                                    <a href="#updateModal"
+                                       data-code="<%= listDataArray[j].productCode %>"
+                                       data-name="<%= listDataArray[j].productName %>"
+                                       data-toggle="modal"
+                                       class="btn btn-xs btn-info editor-btn">
+                                        <i class="ace-icon fa fa-pencil bigger-120"></i>编辑
+                                    </a>
+                                    <a href="/product/settings/form?menuId=<%= menuId %>&pid=<%= listDataArray[j].productCode %>"
+                                       class="btn btn-xs btn-inverse setting-btn">
+                                        <i class="ace-icon fa fa-cog bigger-120"></i>配置
+                                    </a>
+                                </td>
+                            </tr>
+                            <% } %>
+                            </tbody>
+                        </table>
+                        <div class="vh-list-bar clearfix">
+                            <div class="number fl">每页 10 条，共 1 页</div>
+                            <!--<div class="paging fr">-->
+                            <!--<a href="javascript:;">上一页</a>-->
+                            <!--<label>-->
+                            <!--<a href=""></a>-->
+                            <!--</label>-->
+                            <!--<a href="javascript:;">下一页</a>-->
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="createModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="blue bigger">创建新的产品</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="product-create-form d-center">
+                        <div class="form-group">
+                            <label for="form-field-select-3">父类产品：</label>
+                            <label>
+                                <select class="chosen-select" data-placeholder="选择父类产品">
+                                    <% for (var i = 0; i < listDataArray.length; i++) { %>
+                                    <option value="<%= listDataArray[i].parentProductCode %>"><%= listDataArray[i].parentProductName %></option>
+                                    <% } %>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-field-productName">产品名称：</label>
+                            <label>
+                                <input class="text" type="text" id="form-field-productName" placeholder="请输入产品名称"/>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-field-productCode">产品编码：</label>
+                            <label>
+                                <input class="text" type="text" id="form-field-productCode" placeholder="请输入产品编码"/>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-sm" data-dismiss="modal">
+                    取消
+                </button>
+
+                <button class="btn btn-sm btn-primary" id="createProduct">
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="updateModal" class="modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="blue bigger">修改产品名称</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="product-create-form d-center">
+
+                        <div class="form-group">
+                            <label for="form-field-productName-update">产品名称：</label>
+                            <label>
+                                <input class="text" type="text" id="form-field-productName-update"
+                                       placeholder="请输入产品名称"/>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form-field-productCode-update">产品编码：</label>
+                            <label>
+                                <input class="text" type="text" id="form-field-productCode-update" placeholder="请输入产品编码"
+                                       readonly/>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-sm" data-dismiss="modal">
+                    取消
+                </button>
+
+                <button class="btn btn-sm btn-primary" id="updateProduct">
+                    确定
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $.jBox.configFun({
+            top: "10%"
+        });
+
+        var $selectBar = $('.chosen-select');
+        $('#createModal').on('shown.bs.modal', function () {
+            $selectBar.chosen({allow_single_deselect: true});
+        })
+
+        $("#createProduct").click(function () {
+            var _parentName = $selectBar.find("option:selected").text();
+            var _parentCode = $selectBar.val();
+            var _name = $("#form-field-productName").val();
+            var _code = $("#form-field-productCode").val();
+
+            if (!_parentName || !_parentCode) {
+                $.jBox.error("请选择父类产品！");
+                return false;
+            }
+
+            if (!_name) {
+                $.jBox.error("请输入产品名称！");
+                return false;
+            }
+
+            if (!_code) {
+                $.jBox.error("请输入产品编码！");
+                return false;
+            }
+
+            var params = {
+                productCode: _code,
+                productName: _name,
+                parentProductName: _parentName,
+                parentProductCode: _parentCode
+            };
+            $.ajax({
+                url: "/product/classify/createProduct",
+                type: "POST",
+                data: params,
+                success: function (data) {
+                    console.log(data);
+                    if (data.code === "0") {
+                        $.jBox.success("添加" + data.message, {
+                            closeFun: function () {
+                                window.location.reload();
+                            }
+                        });
+                    } else {
+                        $.jBox.error(data.message);
+                    }
+
+                }
+            });
+        });
+
+        $('#updateModal').on('shown.bs.modal', function (e) {
+            var $clickTarget = $(e.relatedTarget);
+            $("#form-field-productName-update").val($clickTarget.data("name"));
+            $("#form-field-productCode-update").val($clickTarget.data("code"));
+        })
+
+        $("#updateProduct").click(function () {
+            var _name = $("#form-field-productName-update").val();
+            var _code = $("#form-field-productCode-update").val();
+            if (!_name) {
+                $.jBox.error("请输入产品名称！");
+                return false;
+            }
+            var params = {
+                productCode: _code,
+                productName: _name
+            };
+            $.ajax({
+                url: "/product/classify/updateProduct",
+                type: "POST",
+                data: params,
+                success: function (data) {
+                    console.log(data);
+                    if (data.code === "0") {
+                        $.jBox.success("更新" + data.message, {
+                            closeFun: function () {
+                                window.location.reload();
+                            }
+                        });
+                    } else {
+                        $.jBox.error(data.message);
+                    }
+
+                }
+            });
+        });
+
+        //配置
+//        $(".setting-btn").click(function () {
+//            window.location.href="/product/settings/form?menuId=28"
+//        });
+    })
+</script>

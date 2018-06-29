@@ -1,0 +1,151 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-3 control-label no-padding-right" for="userName" id="userNameLabel">用户名</label>
+                <div class="col-md-9">
+                    <div class="clearfix" id="userNameDiv">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label no-padding-right" for="product">操作员姓名&nbsp;<span style="color:red">*</span></label>
+                <div class="col-md-9">
+                    <div class="clearfix">
+                        <input type="text" name="name" id="name" class="required"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label no-padding-right" for="isValid">是否有效&nbsp;<span style="color:red">*</span></label>
+                <div class="col-md-9">
+                    <div class="clearfix">
+                        <select class="input-medium required" name="isValid" id="isValid">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-3 control-label no-padding-right">角色&nbsp;<span style="color:red">*</span></label>
+                <div class="col-md-9">
+                    <div class="checkbox" id="roleDiv">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-5 col-md-9">
+                    <input type="button" id="submit" value="提交" style="width: 80px"  class="btn btn-primary" onclick="save()">
+                    <input type="button" id="back" value="返回" style="width: 80px"  class="btn btn-primary" onclick="goBack()">
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="operatorId" id="operatorId" value="<%=operatorId%>">
+    <input type="hidden" name="roleIds" id="roleIds">
+</form>
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/messages_zh.js"></script>
+<script src="/js/common/form.js"></script>
+<script src="/js/common/dict.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+        $("#form").validate();
+        var operatorId = '<% if(operatorId) { %><%=operatorId%><% } %>';
+
+        var url = "/system/permission/operator/form_data?operatorId=" + operatorId;
+        $.get(url, function(data){
+            var isValidItems = data.isValidItems;
+            fillSelectDict('isValid', isValidItems);
+            var roleData = data.roleData;
+            for(var i=0; i<roleData.length; i++){
+                var roleItemHtml = '<label class="checkbox-item-1">\n' +
+                '                    <input name="role" type="checkbox" class="ace" value="' + roleData[i].operatorGroupId + '"/>\n' +
+                '                        <span class="lbl">' + roleData[i].operatorGroupName + '</span>\n' +
+                '                    </label>';
+                $("#roleDiv").append(roleItemHtml);
+                if((i+1)%5==0){
+                    $("#roleDiv").append('<br />');
+                }
+            }
+
+
+            if(operatorId!=""){
+                var formData = data.formData;
+                var operator = formData.operator;
+
+                $('#userNameDiv').html('<label class="control-label text-left">' + operator.userName + '</label>');
+                $('#name').val(operator.name);
+                $('#isValid').val(operator.isValid);
+                $('#role').val(operator.roleId);
+
+                var operatorGroupIdArray = [];
+                var operatorGroupOperator = formData.operatorGroupOperator;
+                for(var i=0; i<operatorGroupOperator.length; i++){
+                    operatorGroupIdArray.push(operatorGroupOperator[i].operatorGroupId);
+                }
+                $("input[name='role']").each(function(i){
+                    if(operatorGroupIdArray.indexOf(parseInt(this.value))!=-1){
+                        this.checked = true;
+                    }
+                })
+            }else {
+                $('#userNameLabel').append('&nbsp;<span style="color:red">*</span>');
+                $('#userNameDiv').html('<input type="text" name="userName" id="userName" class="required"/>');
+            }
+        });
+
+    });
+
+
+    function save(){
+        var roleIds = "";
+        $("input[name='role']").each(function(i){
+            if(this.checked){
+                roleIds = roleIds + this.value + ',';
+            }
+        })
+        if(roleIds.length>0){
+            roleIds = roleIds.substring(0, roleIds.length-1);
+        }else{
+            alert('请至少选择一个角色');
+            return;
+        }
+        $("#roleIds").val(roleIds);
+
+        $('#form').submit();
+    }
+
+    function doSubmit(){
+        $.ajax({
+            url: '/system/permission/operator/form_save',
+            type: 'post',
+            data: $("#form").serialize(),
+            success:function(data){
+                if(data.code=='0'){
+                    alert('提交成功');
+                    goBack();
+                }else{
+                    alert(data.message);
+                    $('#submit').attr("disabled",false);
+                }
+
+            }
+        });
+    }
+
+    function goBack(){
+        $(location).attr('href', '/system/permission/operator/list?menuId=<%=menuId%>');
+    }
+</script>

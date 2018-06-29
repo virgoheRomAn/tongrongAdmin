@@ -1,0 +1,128 @@
+<form class="form-horizontal" role="form" id="form">
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="col-md-1 control-label no-padding-right" for="date">申请日期</label>
+            <div class="col-md-3">
+                <input class="date-picker required" name="startTime" id="startTime" type="text" data-date-format="yyyy-mm-dd"/>
+            </div>
+            <label class="col-md-1 control-label no-padding-right" for="name">客户姓名</label>
+            <div class="col-md-3">
+                <input type="text" name="name" id="name"/>
+            </div>
+            <label class="col-md-1 control-label no-padding-right" for="tenant"> 渠道 </label>
+            <div class="col-md-3">
+                <select class="input-medium" name="tenant" id="tenant">
+                    <option></option>
+                    <option value="1">摩尔龙</option>
+                    <option value="2">惠理</option>
+                    <option value="3">爱屋吉屋</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <div class="col-md-12 text-center">
+                <input type="button" class="btn btn-xs btn-primary" style="width: 80px" value="查询" onclick="search()">
+                <input type="button" class="btn btn-xs btn-primary" style="width: 80px" value="重置" onclick="this.form.reset()">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" class="btn btn-xs btn-purple" style="width: 80px" value="导出" onclick="exportExcel()">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+            <thead>
+                <tr>
+                    <th class="center">申请编号</th>
+                    <th class="center">客户姓名</th>
+                    <th class="center">身份证号</th>
+                    <th class="center">放款金额（元）</th>
+                    <th class="center">银行卡号</th>
+                    <th class="center">申请渠道</th>
+                    <th class="center">申请时间</th>
+                    <th class="center">操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div><!-- /.span -->
+</div><!-- /.row -->
+</form>
+<!-- page specific plugin scripts -->
+<script>
+    var table;
+    $(document).ready(function() {
+//        $.get('/biz/order/list_other_data', function(data){
+//            var dict = data.dict;
+//            for(var j=0; j<dict.length; j++) {
+//                if(dict[j].typeCode=='ORDER_STATUS'){
+//                    $('#orderStatus').append('<option value="' + dict[j].code + '">' + dict[j].codeDesc + '</option>');
+//                }
+//            }
+//        });
+
+
+        $('.date-picker').datepicker({
+            autoclose:true
+        });
+
+        table = $('#table').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //开启服务器模式
+            serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+            ajax: {
+                "url": "/biz/repayment/list_data",
+                "data": function ( d ) {
+                    //添加额外的参数传给服务器
+                    d.name = $('#name').val();
+                    d.tenant = $('#tenant').val();
+                    d.startTime = $('#startTime').val();
+                }
+            },
+            columns: [
+                { data: 'orderId', className: 'center' },
+                { data: 'name', className: 'center' },
+                { data: 'idNo', className: 'center' },
+                { data: 'finalAccount', className: 'center' },
+                { data: 'bankCardNo', className: 'center' },
+                { data: 'tenant', className: 'center' },
+                { data: 'createTime', className: 'center' },
+                { data: 'orderId', className: 'center' }
+            ],
+            columnDefs: [{
+                "render": function ( data, type, row, meta ) {
+                    var orderId = row.orderId;
+                    var html = '<a href="/biz/repayment/form?menuId=<%=menuId%>&orderId='+ orderId +'">还款</a>';
+                    return html;
+                },
+                "targets": 7
+            }]
+        } );
+
+//        $('#orderStatus').on( 'keyup', function () {
+//            table.columns( 6 )
+//                .search( this.value )
+//                .draw();
+//        } );
+    } );
+
+
+    function search(){
+        table.ajax.reload();
+    }
+
+    function exportExcel(){
+        window.open('/biz/repayment/list_export_excel?date=' + $('#date').val() + '&orderStatus=' + $('#orderStatus').val() + '&name=' + $('#name').val() + '&tenant=' + $('#tenant').val() + '&startTime=' + $('#startTime').val());
+    }
+</script>

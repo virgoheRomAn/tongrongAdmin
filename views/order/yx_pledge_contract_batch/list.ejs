@@ -1,0 +1,87 @@
+<div class="pull-left tableTools-container">
+    <div class="dt-buttons btn-overlap btn-group">
+        <button class="btn btn-primary" onclick="addContract()">生成合同</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+            <thead>
+                <tr>
+                    <th class="center">批次号</th>
+                    <th class="center">合同类型</th>
+                    <th class="center">模板</th>
+                    <th class="center">合同数</th>
+                    <th class="center">合同编号</th>
+                    <th class="center">生成时间</th>
+                    <th class="center">操作</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div><!-- /.span -->
+</div><!-- /.row -->
+
+<!-- page specific plugin scripts -->
+<script>
+    $(document).ready(function() {
+        $('#table').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //开启服务器模式
+            serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+            ajax: '/order/yx_pledge_contract_batch/list_data',
+            columns: [
+                { data: 'id' },
+                { data: 'contract_type' },
+                { data: 'template_desc' },
+                { data: 'count' },
+                { data: 'contract_no_desc' },
+                { data: 'create_time' },
+                { data: 'id' }
+            ],
+            columnDefs: [{
+                "render": function ( data, type, row, meta ) {
+                    var status = row.status;
+                    var html;
+                    if(status == '100'){
+                        html = '<a href="/order/yx_pledge_contract_batch/download?id='+ data +'">下载</a> &nbsp;&nbsp;' ;
+//                            +
+//                            '<a href="#" onclick="abandon(this, ' + data + ')">废弃</a>';
+                    }else if(status == '200'){
+                        html = '已废弃';
+                    }
+                    return html;
+                },
+                "targets": 6
+            }]
+        } );
+    } );
+
+    function addContract(){
+        $(location).attr('href', '/order/yx_pledge_contract_batch/form?menuId=<%=menuId%>');
+    }
+
+    function abandon(obj, id){
+        var r=confirm("确定要废弃合同?")
+        if (r==true)
+        {
+            $.ajax({
+                url: '/order/contract/abandon',
+                type: 'post',
+                data: {id:id},
+                success:function(data){
+                    if(data=='1'){
+                        alert('合同废弃成功');
+                        $(obj).parent().html("已废弃");
+                    }
+                }
+            });
+        }
+    }
+</script>

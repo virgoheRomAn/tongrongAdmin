@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+<head>
+    <meta charset="utf-8"/>
+    <title>通融小贷</title>
+
+    <!-- basic styles -->
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/font-awesome.min.css"/>
+
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="/css/font-awesome-ie7.min.css"/>
+    <![endif]-->
+
+    <!-- page specific plugin styles -->
+
+    <!-- fonts -->
+
+    <!--<link rel="stylesheet" href="/css/cyrillic.css"/>-->
+
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="/css/ace.min.css"/>
+    <link rel="stylesheet" href="/css/ace-rtl.min.css"/>
+
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" href="/css/ace-ie.min.css"/>
+    <![endif]-->
+
+    <link rel="stylesheet" href="/css/jBox.css">
+
+    <style type="text/css">
+        .login-bar{
+            height: 100%;
+            margin-top: -40px;
+        }
+
+        .login-bar .main-content{
+            display: -webkit-box; /* OLD - iOS 6-, Safari 3.1-6 */
+            display: -moz-box; /* OLD - Firefox 19- (buggy but mostly works) */
+            display: -ms-flexbox; /* TWEENER - IE 10 */
+            display: -webkit-flex; /* NEW - Chrome */
+            display: flex; /* NEW, Spec - Opera 12.1, Firefox 20+ */
+            justify-content: center;
+            -webkit-justify-content: center;
+            align-items: center;
+            -webkit-align-items: center;
+        }
+    </style>
+
+    <!-- inline styles related to this page -->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+    <script src="/js/html5shiv.js"></script>
+    <script src="/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="login-layout" style="height: 100%;">
+<div class="main-container login-bar">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-sm-10">
+                <div class="login-container">
+                    <div class="center">
+                        <h1>
+                            <i class="icon-leaf green"></i>
+                            <span class="red"></span>
+                            <span class="white">通融小贷</span>
+                        </h1>
+                    </div>
+
+                    <div class="space-6"></div>
+
+                    <div class="position-relative">
+                        <div id="login-box" class="login-box visible widget-box no-border">
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <h4 class="header blue lighter bigger">
+                                        <i class="icon-coffee green"></i>
+                                        请输入用户名和密码
+                                    </h4>
+
+                                    <div class="space-6"></div>
+
+                                    <form>
+                                        <fieldset>
+                                            <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="text" id="userName" name="userName"
+                                                                   value="yangjie" class="form-control"
+                                                                   placeholder="用户名"/>
+															<i class="icon-user"></i>
+														</span>
+                                            </label>
+
+                                            <label class="block clearfix">
+														<span class="block input-icon input-icon-right">
+															<input type="password" id="userPassword" name="userPassword"
+                                                                   value="a123456" class="form-control"
+                                                                   placeholder="密码"/>
+															<i class="icon-lock"></i>
+														</span>
+                                            </label>
+
+                                            <div class="space"></div>
+
+                                            <div class="clearfix">
+                                                <button type="button" class="width-35 pull-right btn btn-sm btn-primary"
+                                                        onclick="login()">
+                                                    <i class="icon-key"></i>
+                                                    登陆
+                                                </button>
+                                            </div>
+
+                                            <div class="space-4"></div>
+                                        </fieldset>
+                                    </form>
+                                </div><!-- /widget-main -->
+                            </div><!-- /widget-body -->
+                        </div><!-- /login-box -->
+                    </div><!-- /position-relative -->
+                </div>
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div>
+</div><!-- /.main-container -->
+
+<!-- basic scripts -->
+
+<!--[if !IE]> -->
+
+<script src="\js\jquery-2.1.4.min.js"></script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script src="\js\jquery-1.11.3.min.js"></script>
+<![endif]-->
+
+<!--[if !IE]> -->
+
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+</script>
+
+<!-- <![endif]-->
+
+<!--[if IE]>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='/js/jquery-1.10.2.min.js'>" + "<" + "/script>");
+</script>
+<![endif]-->
+
+<script type="text/javascript">
+    if ("ontouchend" in document) document.write("<script src='/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+</script>
+
+<script src="js/jQuery.jBox.js"></script>
+
+<!-- inline scripts related to this page -->
+
+<script type="text/javascript">
+    $(function () {
+
+        window.addEventListener("keypress", function (e) {
+            if (e.keyCode === 13) {
+                login();
+            }
+        }, false);
+    });
+
+    function login() {
+        var userName = $('#userName').val();
+        var passWord = $('#userPassword').val();
+
+        if (!userName) {
+            $.jBox.error("请输入用户名！");
+            return false;
+        }
+
+        if (!passWord) {
+            $.jBox.error("请输入密码！");
+            return false;
+        }
+
+        $.jBox.loading("正在登陆中...", {boxID: "loading"});
+        $.ajax({
+            url: '/login',
+            type: 'post',
+            data: {
+                userName: userName,
+                userPassword: passWord,
+                companyId: '0'
+            },
+            success: function (data) {
+                if (data.code === '0') {
+                    $.jBox.close("#loading", null, function () {
+                        $.jBox.success("登陆成功！", {
+                            closeFun: function () {
+                                window.location.href = '/index';
+                            }
+                        });
+                    });
+                } else {
+                    $.jBox.close("#loading", null, function () {
+                        $.jBox.error("登陆失败：" + data.message);
+                    });
+                }
+            }
+        });
+        //window.location.href = '/login?userName=' + $("#userName").val() +'&userPassword=' + $("#userPassword").val();
+    }
+
+
+</script>
+</body>
+</html>

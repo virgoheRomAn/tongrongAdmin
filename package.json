@@ -1,0 +1,38 @@
+{
+  "name": "node-boss-web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "server": "node app.js"
+  },
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "~1.17.1",
+    "config": "^1.26.2",
+    "cookie-parser": "~1.4.3",
+    "cos-nodejs-sdk-v5": "^2.0.8",
+    "debug": "~2.6.3",
+    "decimal": "0.0.2",
+    "docxtemplater": "^3.1.7",
+    "docxtemplater-image-module": "^3.1.0",
+    "ejs": "^2.5.7",
+    "excel-export": "^0.5.1",
+    "express": "~4.15.2",
+    "express-session": "^1.15.6",
+    "fs": "0.0.1-security",
+    "jszip": "^2.6.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "morgan": "~1.8.1",
+    "multer": "^1.3.0",
+    "mysql": "^2.14.1",
+    "needle": "^2.2.0",
+    "node-uuid": "^1.4.8",
+    "path": "^0.12.7",
+    "qrcode": "^0.9.0",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2",
+    "zip-local": "^0.3.4"
+  }
+}

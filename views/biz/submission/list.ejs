@@ -1,0 +1,144 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="col-md-3 flex-container-1">
+                    <div><label class="control-label">开始时间</label></div>
+                    <div class="flex-item-1">
+                        <input class="date-picker" name="startDate" id="startDate" type="text" data-date-format="yyyy-mm-dd" value="2017-11-26"/>
+                    </div>
+                </div>
+                <div class="col-md-3 flex-container-1">
+                    <div><label class="control-label">结束时间</label></div>
+                    <div class="flex-item-1">
+                        <input class="date-picker" name="endDate" id="endDate" type="text" data-date-format="yyyy-mm-dd" value="2017-11-30"/>
+                    </div>
+                </div>
+                <div class="col-md-3 flex-container-1">
+                    <div><label class="control-label">报告类型</label></div>
+                    <div class="flex-item-1">
+                        <select class="input-medium" name="reportType" id="reportType">
+                            <option value="1">增量报文</option>
+                            <option value="2" >更新报文</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 flex-container-1">
+                    <div><label class="control-label">报告类型</label></div>
+                    <div class="flex-item-1">
+                        <label class="checkbox-item-1">
+                            <input name="reportList" type="checkbox" class="ace" value="netsign" checked>
+                            <span class="lbl">网签</span>
+                        </label>
+                        <label class="checkbox-item-1">
+                            <input name="reportList" type="checkbox" class="ace" value="contract" checked>
+                            <span class="lbl">合同</span>
+                        </label>
+                        <label class="checkbox-item-1">
+                            <input name="reportList" type="checkbox" class="ace" value="issue" checked>
+                            <span class="lbl">发放</span>
+                        </label>
+                        <label class="checkbox-item-1">
+                            <input name="reportList" type="checkbox" class="ace" value="repayplan" checked>
+                            <span class="lbl">还款计划</span>
+                        </label>
+                        <label class="checkbox-item-1">
+                            <input name="reportList" type="checkbox" class="ace" value="repay" checked>
+                            <span class="lbl">还款</span>
+                        </label>
+                    </div>
+                    <div class="flex-container-1">
+                        <input type="button" class="btn btn-xs btn-primary" style="width: 80px" value="生成" onclick="create()">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 ">
+            <table id="table" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                    <tr>
+                        <th class="center">批次号</th>
+                        <th class="center">报文清单</th>
+                        <th class="center">报文数据开始时间</th>
+                        <th class="center">报文数据结束时间</th>
+                        <th class="center">操作人</th>
+                        <th class="center">生成时间</th>
+                        <th class="center">操作</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                </tbody>
+            </table>
+        </div><!-- /.span -->
+    </div><!-- /.row -->
+</form>
+<!-- page specific plugin scripts -->
+
+<script>
+    var table;
+    $(document).ready(function() {
+        $('.date-picker').datepicker({
+            autoclose:true
+        });
+
+        table = $('#table').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //开启服务器模式
+            serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+            ajax: "/biz/submission/list_data",
+            columns: [
+                { data: 'batchNo', className: 'center'  },
+                { data: 'reportList', className: 'center'  },
+                { data: 'startDate', className: 'center'  },
+                { data: 'endDate', className: 'center'  },
+                { data: 'operator', className: 'center'  },
+                { data: 'createTime', className: 'center'  },
+                { data: 'batchNo', className: 'center'  }
+            ],
+            columnDefs: [{
+                "render": function ( data, type, row, meta ) {
+                    var html = '<a href="/biz/submission/export_excel?batchNo=' + data + '">导出</a>';
+                    return html;
+                },
+                "targets": 6
+            }]
+        } );
+    } );
+
+    function create(){
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+        var reportType = $('#reportType').val();
+        var reportListStr = "";
+        $("input[name='reportList']").each(function(i){
+            if(this.checked){
+                reportListStr = reportListStr + this.value + ',';
+            }
+        })
+        if(reportListStr.length>0){
+            reportListStr = reportListStr.substring(0, reportListStr.length-1);
+        }else{
+            alert('请至少选择一个报告类型');
+            return;
+        }
+        $.get('/biz/submission/create?startDate=' + startDate + '&endDate=' + endDate + '&reportList=' + reportListStr + '&reportType=' + reportType, function(data){
+            alert('提交成功');
+            table.ajax.reload();
+        });
+    }
+
+
+</script>

@@ -1,0 +1,75 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 借款方 </label>
+        <div class="col-sm-9">
+            <input type="text" name="customer_name" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 身份证号 </label>
+        <div class="col-sm-9">
+            <input type="text" name="idcard_no" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 通讯地址 </label>
+        <div class="col-sm-9">
+            <input type="text" name="address" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 联系电话 </label>
+        <div class="col-sm-9">
+            <input type="text" name="phone" class="col-xs-10 col-sm-5" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 贷款金额 </label>
+        <div class="col-sm-9">
+            <input type="text" name="loan_amount" class="col-xs-10 col-sm-5" />
+            &nbsp;&nbsp;<label class="control-label no-padding-right" for="form-field-1">元</label>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 使用期限 </label>
+        <div class="col-sm-9">
+            <input type="text" name="periods" class="col-xs-10 col-sm-5" />
+            &nbsp;&nbsp;<label class="control-label no-padding-right" for="form-field-1">月</label>
+        </div>
+    </div>
+
+    <div class="clearfix form-actions">
+        <div class="col-md-offset-3 col-md-9">
+            <button class="btn btn-info" type="button" onclick="save();">
+                <i class="ace-icon fa fa-check bigger-110"></i>
+                提交
+            </button>
+
+            &nbsp; &nbsp; &nbsp;
+            <button class="btn" type="reset" onclick="back()">
+                <i class="ace-icon fa fa-undo bigger-110"></i>
+                返回
+            </button>
+        </div>
+    </div>
+</form>
+
+
+
+<script>
+    function save(){
+        $.ajax({
+            url: '/approval/contract/save',
+            type: 'post',
+            data: $("#form").serialize(),
+            success:function(data){
+                alert('提交成功');
+                back();
+            }
+        });
+    }
+
+    function back(){
+        $(location).attr('href', '/approval/contract/list');
+    }
+</script>

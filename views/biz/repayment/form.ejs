@@ -1,0 +1,232 @@
+<form class="form-horizontal" role="form" id="form">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                贷款信息
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right">申请编号</label>
+                <div class="col-md-3">
+                    <label id="orderId" class="control-label text-left"></label>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">贷款金额（元）</label>
+                <div class="col-md-3">
+                    <label id="finalAccount" class="control-label text-left"></label>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">贷款期数</label>
+                <div class="col-md-3">
+                    <label id="riskTerm" class="control-label text-left"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right">贷款利率（%）</label>
+                <div class="col-md-3">
+                    <label id="rate" class="control-label text-left"> </label>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">还款方式</label>
+                <div class="col-md-3">
+                    <label id="repayment" class="control-label text-left"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                银行账号
+            </h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right">姓名</label>
+                <div class="col-md-3">
+                    <label id="name" class="control-label text-left"></label>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">身份证号</label>
+                <div class="col-md-3">
+                    <label id="idNo" class="control-label text-left"></label>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">银行卡号</label>
+                <div class="col-md-3">
+                    <label id="bankCardNo" class="control-label text-left"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                还款计划
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="repaymentScheduleTable" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                <tr>
+                    <th class="center">计划还款日</th>
+                    <th class="center">期初余额（元）</th>
+                    <th class="center">当期应还（元）</th>
+                    <th class="center">应还本金（元）</th>
+                    <th class="center">应还利息（元）</th>
+                    <th class="center">期末余额（元）</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div><!-- /.span -->
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                还款记录
+            </h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="repayTable" class="table table-striped table-bordered table-hover" width="100%">
+                <thead>
+                <tr>
+                    <th class="center">还款总额（元）</th>
+                    <th class="center">还款本金（元）</th>
+                    <th class="center">还款利息（元）</th>
+                    <th class="center">还款时间</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div><!-- /.span -->
+    </div>
+    <div class="row eidt">
+        <div class="col-md-12">
+            <h3 class="header smaller lighter blue">
+                还款确认
+            </h3>
+        </div>
+    </div>
+
+    <div class="row eidt">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="col-md-1 control-label no-padding-right">实还本金（元）</label>
+                <div class="col-md-3">
+                    <input type="text" name="principal" id="principal"/>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">实还利息（元）</label>
+                <div class="col-md-3">
+                    <input type="text" name="interest" id="interest"/>
+                </div>
+                <label class="col-md-1 control-label no-padding-right">还款日期</label>
+                <div class="col-md-3">
+                    <input class="date-picker" name="endDate" id="endDate" type="text" data-date-format="yyyy-mm-dd" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row eidt">
+        <div class="col-md-12">
+            <div class="clearfix form-actions">
+                <div class="col-md-offset-5 col-md-9">
+                    <button class="btn btn-info" type="button" onclick="submitForm()">
+                        <i class="ace-icon fa fa-check bigger-110"></i>
+                        提交
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="orderId" id="orderId" value="<%=orderId%>">
+    <input type="hidden" name="tenant" id="tenant">
+</form>
+
+<script src="/js/jquery.validate.min.js"></script>
+<script src="/js/messages_zh.js"></script>
+<script src="/js/common/form.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('.date-picker').datepicker({
+            autoclose:true
+        });
+
+        $.get('/biz/repayment/form_data?orderId=<%=orderId%>', function(data){
+            $('#orderId').html(data.orderId);
+            $('#finalAccount').html(data.finalAccount);
+            $('#riskTerm').html(data.riskTerm);
+            $('#rate').html(data.rate);
+            $('#repayment').html(data.repayment);
+
+            $('#name').html(data.name);
+            $('#idNo').html(data.idNo);
+            $('#bankCardNo').html(data.bankCardNo);
+            $('#tenant').val(data.tenant);
+        });
+
+
+        $('#repaymentScheduleTable').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //开启服务器模式
+            //serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+            ajax: '/biz/repayment/repayment_schedule_list_data?orderId=<%=orderId%>',
+            columns: [
+                { data: 'dueDate', className: 'center' },
+                { data: 'beginCount', className: 'center' },
+                { data: 'repaymentAmount', className: 'center' },
+                { data: 'principalAmount', className: 'center' },
+                { data: 'interestAmount', className: 'center' },
+                { data: 'endCount', className: 'center' }
+            ]
+        } );
+
+
+        $('#repayTable').DataTable( {
+            "processing": true,
+            "lengthChange": false,
+            "filter": false,
+            //开启服务器模式
+            //serverSide: true,
+            //数据来源（包括处理分页，排序，过滤） ，即url，action，接口，等等
+            ajax: '/biz/repayment/repay_list_data?orderId=<%=orderId%>',
+            columns: [
+                { data: 'repaymentTotalAmount', className: 'center' },
+                { data: 'principalTotalAmount', className: 'center' },
+                { data: 'interestTotalAmount', className: 'center' },
+                { data: 'createTime', className: 'center' }
+            ]
+        } );
+    });
+
+    function submitForm(){
+        $.ajax({
+            url: '/biz/repayment/form_save',
+            type: 'post',
+            data: $("#form").serialize(),
+            success:function(data){
+                if(data.code=='0'){
+                    alert('提交成功');
+                    $(location).attr('href', '/biz/repayment/list?menuId=<%=menuId%>');
+                }else{
+                    alert(data.message);
+                }
+            }
+        });
+    }
+</script>
